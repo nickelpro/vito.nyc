@@ -56,9 +56,47 @@ body {
   text-decoration: underline;
 }
 
+table-list {
+  width: 100%;
+  border-spacing: 0px 0px;
+  border-collapse: collapse;
+  box-sizing: border-box;
+}
+
+.blog-date {
+  width: 20%;
+  flex-shrink: 1;
+}
+
+.blog-post {
+  width: 80%;
+  flex-shrink: 1;
+}
+
 .artist-btn {
   @extend .btn;
   padding-left: 0;
+}
+
+.artist {
+  width: 40%;
+  flex-shrink: 1;
+}
+
+.track {
+  width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink:  1;
+}
+
+.tracks {
+  width: 40%;
+}
+
+.writing {
+  width: 50%;
 }
 
 .justify-evenly {
@@ -68,12 +106,4 @@ body {
 .lang-label {
   margin: 0;
   padding: .5rem 1rem;
-}
-
-#recent-writing {
-  flex: 5;
-}
-
-#recently-played {
-  flex: 4;
 }
