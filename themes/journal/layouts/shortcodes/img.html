@@ -1,0 +1,11 @@
+{{ $img := .Page.Resources.GetMatch (printf "*%s*" (.Get "src"))}}
+<figure>
+  <img src="{{ $img.RelPermalink }}" alt="{{ .Get "alt" }}">
+	<figcaption>
+    {{ if eq (len .Inner) 0}}
+      {{ .Get "caption" | markdownify }}
+    {{ else }}
+      {{ .Inner | markdownify }}
+    {{ end }}
+	</figcaption>
+</figure>

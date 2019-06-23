@@ -1,0 +1,19 @@
+baseURL = "https://blog.nickelp.ro"
+languageCode = "en-us"
+title = "nickelp.ro"
+theme = "journal"
+
+[params]
+  homeURL = "https://nickelp.ro"
+  description = "Personal Site"
+  githubUsername = "nickelpro"
+  twitterUsername = "VitoGamberini"
+  redditUsername = "not_a_novel_account"
+  instagramUsername = "vito.gamberini"
+  tagline = "Taglines are for nerds"
+
+[params.work]
+  jobTitle = "Deep Sea Noodle"
+
+[author]
+  name = "Vito Gamberini"

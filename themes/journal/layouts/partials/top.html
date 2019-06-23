@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    {{ hugo.Generator }}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="{{ .Site.Author.name }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+
+    {{ if .IsHome -}}
+    <title>{{ .Site.Title }}</title>
+    <meta property="og:title" content="{{ .Site.Title }}">
+    <meta property="og:type" content="website">
+    <meta name="description" content="{{ .Site.Params.description }}">
+    {{- else -}}
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <meta property="og:title" content="{{ .Title }} - {{ .Site.Title }}">
+    <meta property="og:type" content="article">
+    <meta name="description" content="{{ .Description }}">
+    {{- end }}
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+    {{ $hs_style := resources.Get "css/highlight.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $hs_style.Permalink }}">
+    {{ $main_style := resources.Get "scss/journal.scss" | toCSS (dict "outputStyle" "compressed") | fingerprint }}
+    <link rel="stylesheet" href="{{ $main_style.Permalink }}">
+    <link href="{{ "index.xml" | relURL }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}">
+  </head>
+
+  <body>
+    <div class="container">
+
+      {{ if .IsHome -}}
+      <header class="site-header">
+        <h1><a href="{{ .Site.Params.homeURL }}">{{ .Site.Title }}</a></h1>
+        <p>{{ .Site.Params.tagline }}</p>
+      </header>
+      {{- else -}}
+      <nav class="site-nav">
+        <a href="{{ .Site.BaseURL }}">Index</a>
+      </nav>
+      {{- end }}

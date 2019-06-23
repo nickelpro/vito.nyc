@@ -1,0 +1,50 @@
+{{ partial "top_header.html" . }}
+
+<div class="flex flex-column">
+  <div class="flex flex-wrap">
+    <section id="recent-writing" class="px4 flex flex-column items-end">
+      <div>
+        <header>What I'm Writing About</header>
+        <ul class="p0" style="list-style-type: none;">
+          {{- range first 5 (where .Site.RegularPages "Section" "posts") -}}
+          <li>
+            <time datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "Jan 02"}}</time>
+            <a class="btn" href="{{ .Permalink }}">{{ .Title }}</a>
+          </li>
+          {{- end -}}
+        </ul>
+      </div>
+    </section>
+
+    <section id="recently-played" class="px4 flex items-center">
+      <div v-if="tracks">
+        <header>What I'm Listening To</header>
+        <div class="flex">
+          <ul class="p0" style="list-style-type: none;">
+            <li v-for="track in tracks">
+              <a class="artist-btn" :href="track.artist_url">${track.artist['#text']}</a>
+            </li>
+          </ul>
+          <ul class="p0" style="list-style-type: none;">
+            <li v-for="track in tracks">
+              <a class="btn" :href="track.url">${track.name}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+  <section id="recent-code" class="flex flex-column items-center">
+    <div v-if="repos">
+      <header style="padding-left: 1rem;">What I'm Hacking On</header>
+      <ul class="p0 flex justify-center" style="list-style-type: none;">
+        <li v-for="repo in repos">
+          <a class="btn" :href="repo.html_url">${ repo.name }</a>
+          <p class="lang-label">${repo.language}</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+{{ .Content }}
+{{ partial "top_footer.html" . }}

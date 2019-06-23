@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    {{ hugo.Generator }}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="{{ .Site.Author.name }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <title>{{ .Site.Title }}</title>
+    <meta property="og:title" content="{{ .Site.Title }}">
+    <meta property="og:type" content="website">
+    <meta name="description" content="{{ .Site.Params.description }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+    <link href="https://unpkg.com/basscss@8.0.2/css/basscss.min.css" rel="stylesheet">
+    {{ $style := resources.Get "scss/top.scss" | toCSS (dict "outputStyle" "compressed") | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    {{ $js := resources.Get "js/root.js" | minify | fingerprint }}
+    <script src="{{ $js.Permalink }}" defer></script>
+  </head>
+  <body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <ul class="p0 flex justify-center" style="list-style-type: none;">
+        <li><a class="btn" href="/">Home</a></li>
+        <li><a class="btn" href="https://blog.nickelp.ro">Blog</a></li>
+        <li><a class="btn" href="/about">About</a></li>
+        <li><a class="btn" href="mailto:vito@gamberini.email">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
