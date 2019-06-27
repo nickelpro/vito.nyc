@@ -12,7 +12,7 @@ could get to it, back when `.pro` TLDs cost waaaay too much money. The domain
 has grown on me over the years, since `.pro` is supposed to be for
 professionals and I've never been much of a professional anything.
 
-### But why nickelpro?
+## But why nickelpro?
 
 Well, for starters, I lied! I haven't always been `nickelpro`, my first ever
 handle was the much more mature and measured `ioublood`. It was the most
@@ -33,7 +33,7 @@ a couple hacks and if you Google `"ioublood"` today you'll find some cringey
 posts of teenage me trying to pose as someone who knew a lot more than I actually
 did.
 
-### Neat, but why nickelpro?
+## Neat, but why nickelpro?
 
 Ben Foddy and Zach Gage gave an [excellent talk](https://youtu.be/N4UFC0y1tY0)
 at GDC this year about taking credit for your work, instead of hiding behind a

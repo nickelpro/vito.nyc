@@ -1,5 +1,5 @@
 {{ $img := .Page.Resources.GetMatch (printf "*%s*" (.Get "src"))}}
-<figure>
+<figure style="text-align: center;">
   <img src="{{ $img.RelPermalink }}" alt="{{ .Get "alt" }}">
 	<figcaption>
     {{ if eq (len .Inner) 0}}

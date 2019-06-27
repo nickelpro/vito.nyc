@@ -22,7 +22,7 @@ books, and a few loose pieces of prose that got lost. I love comic books and I
 hope that if you're reading this, maybe by the end I can convince you to pick
 one up yourself.
 
-### A Brief Introduction
+## A Brief Introduction
 
 Where to even begin? We have a unique opertunity here, it's much easier to
 wax poetic about comics in writing than in person. Comics are inherently
