@@ -37,6 +37,23 @@ body {
   margin: 0;
 }
 
+.link {
+  font-family: inherit;
+  font-size: inherit;
+  text-decoration: none;
+  margin: 0;
+  height: auto;
+  border: 1px solid transparent;
+  vertical-align: middle;
+  color: inherit;
+  background-color: transparent;
+}
+
+.link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .btn {
   font-family: inherit;
   font-size: inherit;
@@ -51,12 +68,8 @@ body {
   color: inherit;
   background-color: transparent;
 }
-.btn:hover {
-	cursor: pointer;
-  text-decoration: underline;
-}
 
-table-list {
+.table-list {
   width: 100%;
   border-spacing: 0px 0px;
   border-collapse: collapse;
@@ -64,6 +77,7 @@ table-list {
 }
 
 .blog-date {
+  padding: .5rem 0rem;
   width: 20%;
   flex-shrink: 1;
 }
