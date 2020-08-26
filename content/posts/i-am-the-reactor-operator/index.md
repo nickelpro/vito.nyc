@@ -53,6 +53,9 @@ Control Division Chief enters the control room and takes station behind me. He
 is here to judge my performance, it’s now my job to bring my reactor back to
 life.
 
+{{< img src="submarine" >}}
+{{< /img >}}
+
 The process feels automatic as muscle memory and instinct take over,
 continually cross-checked with evidence from my indications. Three years ago I
 wouldn’t have been able to succeed here, in some ways the teenager from Long
