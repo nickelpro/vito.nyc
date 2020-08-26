@@ -33,16 +33,21 @@ var code = new Vue({
     },
     mounted () {
         axios
-            .get('https://api.github.com/users/nickelpro/repos?sort=pushed')
+            .get('https://api.github.com/users/nickelpro/events/public')
             .then(response => {
                 this.repos = []
-                 for(var i=0;(i<response.data.length && i<5);i++) {
-                    this.repos[i] = response.data[i]
-                    this.repos[i].time = dateFns.distanceInWordsToNow(new Date(
-                        this.repos[i].updated_at
-                    ), {addSuffix: true})
-                    if(this.repos[i].language == null) {
-                        this.repos[i].language = 'Unknown'
+                var names = []
+                for(var i=0, j=0;(i<response.data.length && j<5);i++) {
+                    var name = /[^/]*$/.exec(response.data[i].repo.name)[0]
+                    if(!names.includes(name)) {
+                        names.push(name)
+                        axios.get(response.data[i].repo.url).then(response => {
+                            if(response.data.language == null) {
+                                response.data.language = 'Unknown'
+                            }
+                            this.repos.push(response.data)
+                        })
+                        j++;
                     }
                 }
             })
