@@ -1,5 +1,5 @@
 ---
-title: "On Programming: The Worst New Guys In History"
+title: "The Worst New Guys In History"
 date: 2019-06-26T18:09:32-07:00
 draft: false
 ---
