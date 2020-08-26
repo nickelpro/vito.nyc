@@ -13,11 +13,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .fleuron {
   font-size: 2rem;
+  margin: $std-margin;
   text-align: center;
 }
 
 h2::before {
   display: block;
+  text-align: center;
+  font-size: 2rem;
   content: "\2767";
 }
 
@@ -25,6 +28,6 @@ p:first-of-type::first-letter {
   font-family: 'Alphabet of Children';
   font-size: 8.2rem;
   float: left;
-  margin-right: 0.1rem;
+  margin-right: 0.25rem;
   line-height: 0.75;
 }

@@ -1,6 +1,6 @@
 {{ $img := .Page.Resources.GetMatch (printf "*%s*" (.Get "src"))}}
 <figure style="text-align: center;">
-  <img src="{{ $img.RelPermalink }}" alt="{{ .Get "alt" }}">
+  <img style="{{ .Get "style" | safeCSS }}"src="{{ $img.RelPermalink }}" alt="{{ .Get "alt" }}">
 	<figcaption>
     {{ if eq (len .Inner) 0}}
       {{ .Get "caption" | markdownify }}
