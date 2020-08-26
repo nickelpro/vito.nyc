@@ -53,7 +53,7 @@ Control Division Chief enters the control room and takes station behind me. He
 is here to judge my performance, it’s now my job to bring my reactor back to
 life.
 
-{{< img src="submarine" >}}
+{{< img src="submarine" style="width=100%; border-radius:2em;" >}}
 {{< /img >}}
 
 The process feels automatic as muscle memory and instinct take over,
@@ -76,6 +76,9 @@ destabilize conditions in my reactor, I have the option of ordering a cautious
 approach.
 
 I give the order, “Answer one-hundred percent power,” and the race is on.
+
+{{< img src="squid" style="width: 40%; float: right; border-radius:0.5em;">}}
+{{< /img >}}
 
 Throttleman wings open his throttles and the main engines gain hundreds of RPM.
 I slam my coolant pumps into their fastest speeds and lock my controls to draw
