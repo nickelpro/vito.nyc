@@ -1,0 +1,30 @@
+$serif: 'Alegreya';
+@import '1800.scss';
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+  font-family: 'Essays1743';
+  font-weight: normal;
+}
+
+.post-title {
+  margin: 0;
+}
+
+.fleuron {
+  font-size: 2rem;
+  text-align: center;
+}
+
+h2::before {
+  display: block;
+  content: "\2767";
+}
+
+p:first-of-type::first-letter {
+  font-family: 'Alphabet of Children';
+  font-size: 8.2rem;
+  float: left;
+  margin-right: 0.1rem;
+  line-height: 0.75;
+}

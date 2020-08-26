@@ -1,7 +1,7 @@
 baseURL = "https://blog.nickelp.ro"
 languageCode = "en-us"
 title = "nickelp.ro"
-theme = "journal"
+theme = "1800"
 
 [params]
   homeURL = "https://nickelp.ro"
@@ -17,3 +17,6 @@ theme = "journal"
 
 [author]
   name = "Vito Gamberini"
+
+[markup.goldmark.renderer]
+unsafe= true

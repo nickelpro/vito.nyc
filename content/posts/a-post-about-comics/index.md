@@ -10,10 +10,10 @@ purpose of generating content, I'm going to try to write up something
 interesting every day for the next few days. Or at least until my homepage
 is filled. Today the subject is my nightstand.
 
-{{% img src="nightstand" %}}
+{{< img src="nightstand" >}}
 Maybe having _Sex Criminals_ and _Necrophilia Variations_ center stage wasn't
 wise. Sue me.
-{{% /img %}}
+{{< /img >}}
 
 It has completely failed to function as a nightstand very nearly from the day
 I bought it. It's not a great bookshelf either to be honest, but we make do

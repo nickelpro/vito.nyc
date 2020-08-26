@@ -22,10 +22,10 @@ Learning programming is hard. That's not an opinion, there's a lot of well
 established literature around the fact that _Intro to Computer Science_
 students seem to fail at staggering rates. [^1]
 
-{{% img src="failure" %}}
+{{< img src="failure" >}}
 Note that _practical_ skills are the problem, we're not talking about
 grasping academic topics
-{{% /img %}}
+{{< /img >}}
 
 Historically this phenomenon has been called _"the camel has two humps"_, after
 a line from an unpublished and now unpopular paper from 2006. The data doesn't
@@ -33,10 +33,10 @@ seem to bear out that _Intro_ courses display a larger bi-modal distribution
 than introductory courses of other fields. However, students definitely drop
 out of _Intro_ more than other fields. [^2]
 
-{{% img src="dropouts" %}}
+{{< img src="dropouts" >}}
 **W** represents drop outs,
 [correlation doesn't imply causation](https://xkcd.com/552/)
-{{% /img %}}
+{{< /img >}}
 
 Thus ends the section of this blog post with anything resembling science or
 facts. Now enter wild conjecture and speculation, I propose that as a creative
@@ -48,26 +48,26 @@ to program you should build a video game. Let's go.
 ## Programming is Art
 
 [Leaving aside the usual question](https://en.wikipedia.org/wiki/Classificatory_disputes_about_art),
-programming inarguable demonstrates some key aspects we associate with creative
+programming inarguably demonstrates some key aspects we associate with creative
 pursuits. One I'd like to touch on quickly is _coding style_, a source of
 endless debate among programmers. I hesistantly offer up this screenshot of my
 editor. You don't need to know anything about code, just get a visual
 impression.
 
-{{% img src="mycode" %}}
+{{< img src="mycode" >}}
 This is from a program that draws a square
-{{% /img %}}
+{{< /img >}}
 
 I'd like you to compare that to some code in the same programming language
 from my good friend Alex.
 
-{{% img src="alexcode" %}}
+{{< img src="alexcode" >}}
 This is from a program that does not draw a square
-{{% /img %}}
+{{< /img >}}
 
 We see a large contrast between styles here. I value high information density,
-struggling to hold in my head what I can't see on the screen. In order to
-manage and organize this writhering mess, I've configured my editor to
+struggling to hold in my head what I cannot see on the screen. In order to
+manage and organize this writhing mess, I've configured my editor to
 _semantically_ highlight the code. This hijacks the [brain's visual processing
 pipeline](https://en.wikipedia.org/wiki/Cognitive_neuroscience_of_visual_object_recognition)
 and allows sufficiently maladjusted people like me to navigate the code the
@@ -96,9 +96,9 @@ in case she ever needs it.
 
 What effect will this have on the quality of the writer's novel?
 
-{{% img src="writer" %}}
+{{< img src="writer" >}}
 I'm uncomfortable not having a picture every few paragraphs
-{{% /img %}}
+{{< /img >}}
 
 Consider a second author who spends the same amount of time reading great works
 of literature, and writing her own stories.
@@ -123,9 +123,9 @@ Why doesn't the carpenter need an internal model of wood? Or writers of story?
 Why don't we talk about artists needing an internal model of
 [cubism](https://en.wikipedia.org/wiki/Cubism)?
 
-{{% img src="cubism" %}}
+{{< img src="cubism" >}}
 Picasso mapped **people** to an **internal model of cubes**
-{{% /img %}}
+{{< /img >}}
 
 Because each and every one of us already has those models. They don't need to
 be developed from scratch, "merely" refined from their amateur state.
@@ -140,26 +140,27 @@ level at least, along with everyone else for all of recorded history. A student
 of art might find the style and tastes of a layman to be _bad_ or _simple_ but
 the layman still **has** tastes. A newcomer to computer programming lacks even
 these foundational elements, because to have taste they would have to know what
-the hell they're looking at.
+the hell it is they're looking at.
 
 ## How to Learn Programming
 
 Despite all that whinging, I don't believe learning to program is any sort of
 herculean feat. I just wouldn't advise ever reading a programming textbook
-cover to cover. The goals of the beginner programmer should always be
-practical, useful programs. These programs will rarely accomplish what they
-were originally planned to do, but in the process of failing beginners will
-place the cornerstones of intuition necessary to succeed.
+cover to cover. The goal of the beginner programmer should always be the
+development of practical, useful programs. These programs will rarely
+accomplish what they were originally planned to do, but in the process of
+failing beginners will place the cornerstones of intuition necessary to
+succeed.
 
 A carpentry apprentice doesn't aimlessly cut wood, he purposefully
 attempts to build furniture and learns in the process of failure. My only piece
 of practical advice in this entire post is that video games are great
-pieces of software to fail at building, because at least you have some fun
-along the way.
+pieces of software to fail at building, because they cover a wide swath of
+programming challenges and you get to have some fun along the way.
 
-{{% img src="carpentry" %}}
+{{< img src="carpentry" >}}
 Build crappy cutting boards _with a purpose_
-{{% /img %}}
+{{< /img >}}
 
 Every question must be relentlessly pursued to ground, assumptions should be
 constantly challenged. Students should never accept "because that's the way it
@@ -171,13 +172,13 @@ Professional programmers don't do this of course, they happily accept black
 boxes the same way soccer moms accept that their vans go _vroom_ when they push
 the accelerator. The difference is the professional programmer has already
 developed her _intuition_, she already has a consistent **internal model of
-computation**, and therefore can make reasonable guesses about how the black
-box works. Just like we can make reasonable guesses, broadly, about how the
-accelerator in the van works.
+computation**, and therefore can make reasonable guesses about how any given
+black box works. Just like we can make reasonable guesses, broadly, about how
+the accelerator in the van works.
 
-When a beginner finds their naturally making those kinds of abstractions about
-how computing works, they're no longer a complete beginner and can proudly call
-themselves a rank amateur.
+When a beginner finds she's naturally making those kinds of abstractions about
+how computing works, she is no longer a complete beginner and can proudly call
+herself a rank amateur.
 
 ## Conclusion
 
@@ -187,7 +188,7 @@ make a gonzo claim about why, and offer two and a half paragraphs of solution.
 
 The point I was trying to get across was simply this, learn how computers work
 before trying to "master" a programming language. The best way to learn how
-computers work is to program a lot and ask a lot of questions, and be
+computers work is to write a lot of code and ask a lot of questions, and be
 relentless in your pursuit of answers. Everything else is shit or product
 placement.
 

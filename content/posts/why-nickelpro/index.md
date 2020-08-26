@@ -29,7 +29,7 @@ pictures!
 
 I mostly spent time hanging out in [IRC](https://en.wikipedia.org/wiki/Internet_Relay_Chat)
 channels run by much better hackers than me, but I had a small role in popularizing
-a couple hacks and if you Google `"ioublood"` today you'll find some cringey
+a couple hacks and if you Google "`ioublood`" today you'll find some cringey
 posts of teenage me trying to pose as someone who knew a lot more than I actually
 did.
 

@@ -22,18 +22,22 @@
     <meta property="og:title" content="{{ .Site.Title }}">
     <meta property="og:type" content="website">
     <meta name="description" content="{{ .Site.Params.description }}">
+    {{ $main_style := resources.Get "scss/1800.scss" | toCSS (dict "outputStyle" "compressed") | fingerprint }}
+    <link rel="stylesheet" href="{{ $main_style.Permalink }}">
     {{- else -}}
     <title>{{ .Title }} - {{ .Site.Title }}</title>
     <meta property="og:title" content="{{ .Title }} - {{ .Site.Title }}">
     <meta property="og:type" content="article">
     <meta name="description" content="{{ .Description }}">
+    {{ $main_style := resources.Get "scss/post.scss" | toCSS (dict "outputStyle" "compressed") | fingerprint }}
+    <link rel="stylesheet" href="{{ $main_style.Permalink }}">
     {{- end }}
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/Essays1743.css">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/Alphabet-of-Children.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700|Alegreya:400,i,b,bi">
     {{ $hs_style := resources.Get "css/highlight.css" | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $hs_style.Permalink }}">
-    {{ $main_style := resources.Get "scss/journal.scss" | toCSS (dict "outputStyle" "compressed") | fingerprint }}
-    <link rel="stylesheet" href="{{ $main_style.Permalink }}">
     <link href="{{ "index.xml" | relURL }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}">
   </head>
 

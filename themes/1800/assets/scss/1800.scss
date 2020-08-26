@@ -2,7 +2,7 @@ $black: #303030;
 $gray: #686868;
 $light-gray: #e5e5e5;
 $white: #fbfbfb;
-$serif: 'Arvo';
+$serif: 'Arvo' !default;
 $monospace: '"Source Code Pro"';
 $fs: 1rem;
 $fs-large: 1.125rem;
@@ -169,23 +169,23 @@ h6 {
 }
 
 h2 {
-  font-size: 1.75rem;
+  font-size: 2rem;
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }
 
 h4 {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
 
 h5 {
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 h6 {
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 
 .container {
