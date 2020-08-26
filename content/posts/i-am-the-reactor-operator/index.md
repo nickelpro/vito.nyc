@@ -77,7 +77,7 @@ approach.
 
 I give the order, “Answer one-hundred percent power,” and the race is on.
 
-{{< img src="squid" style="width: 40%; float: right; border-radius:0.5em;">}}
+{{< img src="squid" style="width: 40%; float: right; border-radius:0.5em; margin-top:2.2em;">}}
 {{< /img >}}
 
 Throttleman wings open his throttles and the main engines gain hundreds of RPM.
