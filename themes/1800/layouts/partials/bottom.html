@@ -39,10 +39,5 @@
         <!-- {{ hugo.BuildDate }} -->
       </footer>
     </div>
-
-  {{ $hs_js := resources.Get "js/highlight.pack.js" | fingerprint }}
-  <script src="{{ $hs_js.Permalink }}"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-
   </body>
 </html>

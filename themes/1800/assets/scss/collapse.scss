@@ -1,0 +1,73 @@
+$black: #303030 !default;
+$dark-gray: #4d4d4d !default;
+$gray: #686868 !default;
+$light-gray: #e5e5e5 !default;
+
+.collapse-button {
+  border-style: none;
+  display: inline-block;
+  background: none;
+  color: $dark-gray;
+  outline: none;
+  text-align: center;
+  position: relative;
+}
+
+.button-ornament {
+  font-size: 2rem;
+  margin: 0 0 0.3rem 0;
+  font-family: Symbola;
+}
+
+.button-label {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin: 0.75rem 0;
+  font-family: Essays1743;
+}
+
+.collapse-button:hover {
+  cursor: pointer;
+}
+
+.collapse-button::after {
+  content: "";
+  width: 0;
+  display: block;
+  height: 2px;
+  border-radius: 10rem;
+  position: relative;
+  margin: 0 auto;
+  background: $gray;
+  transform: scaleX(0);
+  transition: width 0.3s;
+}
+
+.collapse-button:hover::after {
+  transform: scaleX(1);
+  width: 100%;
+}
+
+.collapsible {
+  width: 100%;
+  text-align: center;
+  border-radius: 1rem;
+  border: 0.1em solid $light-gray;
+}
+
+.collapse-div {
+    transition: height 0.4s;
+    height: 0;
+    overflow: hidden;
+}
+
+.collapse-inner {
+  font-family: "Averia Libre";
+  text-align: left;
+  font-size: 0.9rem;
+  margin: 0 1rem;
+}
+
+.collapse-inner pre {
+  border-radius: 1rem;
+}

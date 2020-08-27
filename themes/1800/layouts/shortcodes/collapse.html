@@ -1,0 +1,14 @@
+<section class="collapsible">
+  <button onclick="collapseToggle(this)" class="collapse-button {{ if (.Get "label") }}button-label{{ else}}button-ornament{{end}}">
+    {{ if (.Get "label") }}
+      {{ .Get "label" }}
+    {{ else }}
+      &#128604;
+    {{ end }}
+  </button>
+  <div class="collapse-div">
+    <div class="collapse-inner">
+      {{ .Inner | markdownify }}
+    </div>
+  </div>
+</section>

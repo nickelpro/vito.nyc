@@ -13,6 +13,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .fleuron {
   font-size: 2rem;
+  font-family: Symbola;
   margin: $std-margin;
   text-align: center;
 }
@@ -20,6 +21,7 @@ h1, h2, h3, h4, h5, h6 {
 h2::before {
   display: block;
   text-align: center;
+  font-family: Symbola;
   font-size: 2rem;
   content: "\2767";
 }
@@ -35,3 +37,5 @@ article>p:first-of-type::first-letter {
 figcaption {
   color: #525252;
 }
+
+@import 'collapse.scss'

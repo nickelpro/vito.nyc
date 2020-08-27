@@ -133,22 +133,11 @@ abbr {
   cursor: help;
 }
 
-kbd,
-code,
 pre {
-  font-family: $monospace, monospace;
+  padding: 0.5rem;
+  white-space: pre-wrap;
 }
 
-pre {
-  max-width: 100%;
-}
-
-kbd,
-code {
-  margin: 0;
-  padding: .125rem .25rem 0;
-  background-color: $light-gray;
-}
 
 article,
 section {
@@ -157,7 +146,7 @@ section {
 }
 
 h1 {
-  font-size: 1.875rem;
+  font-size: 2rem;
 }
 
 h2,
@@ -169,7 +158,7 @@ h6 {
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.875rem;
 }
 
 h3 {
