@@ -11,11 +11,12 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-.fleuron {
-  font-size: 2rem;
-  font-family: Symbola;
-  margin: $std-margin;
+.fleuron::before {
+  display: block;
   text-align: center;
+  font-family: Symbola;
+  font-size: 2rem;
+  content: "\2767";
 }
 
 h2::before {

@@ -5,18 +5,24 @@ $light-gray: #e5e5e5 !default;
 
 .collapse-button {
   border-style: none;
-  display: inline-block;
   background: none;
   outline: none;
-  text-align: center;
-  position: relative;
+  width: 100%;
+}
+
+.collapse-button:hover {
+  cursor: pointer;
 }
 
 .button-ornament {
+  margin: 0 0 0.4rem;
+}
+
+.button-ornament::before{
   color: $dark-gray;
   font-size: 1.75rem;
-  margin: 0 0 0.3rem 0;
   font-family: Symbola;
+  content: "\1F65C";
 }
 
 .button-label {
@@ -27,11 +33,11 @@ $light-gray: #e5e5e5 !default;
   font-family: Essays1743;
 }
 
-.collapse-button:hover {
-  cursor: pointer;
+.collapse-button-inner {
+  display: inline-block;
 }
 
-.collapse-button::after {
+.collapse-button-inner::after {
   content: "";
   width: 0;
   display: block;
@@ -40,11 +46,10 @@ $light-gray: #e5e5e5 !default;
   position: relative;
   margin: 0 auto;
   background: $gray;
-  transform: scaleX(0);
   transition: width 0.3s;
 }
 
-.collapse-button:hover::after {
+.collapse-button:hover .collapse-button-inner::after {
   transform: scaleX(1);
   width: 100%;
 }

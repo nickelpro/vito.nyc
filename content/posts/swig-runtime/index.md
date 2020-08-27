@@ -1,12 +1,12 @@
 ---
-title: "Leveraging SWIG"
-subtitle: "To Build Tightly Coupled C/C++ & Python Programs"
+title: "The Undocumented SWIG"
+subtitle: "Building High Performance Integrated Python Extensions"
 date: 2020-08-26T13:46:15-04:00
-draft: false
+draft: true
 ---
 
 For those who have never ventured into the dark underworld of the Python
-C&#8209;Extension API, you may believe that it is as rewarding and seamless as
+C&#8209;Extension API, you may believe that it is as fluid and rewarding as
 the rest of the Python ecosystem. I regret to inform you that this is not the
 case. Line 13 of [*The Zen of Python*](https://www.python.org/dev/peps/pep-0020/)
 says:
@@ -62,39 +62,45 @@ much too high to be maintainable for most applications, and it doesn't even
 begin to address C++ codebases which will have to first build a C wrapper.
 {{< /collapse >}}
 
-Fear not however, none except the clinically insane would interact with the
-C&#8209;Extension API directly, and we won't be going insane today. Instead we
-will be talking about the excellent *Simplified Wrapper and Interface
-Generator*, better known as [SWIG](http://www.swig.org/). More specifically,
-we're going to look at how to use the SWIG runtime to easily convert pointers
-between native C/C++ types and CPython objects and other fun that can be had
-when we pick a specific scripting language to target.
+Thankfully there is a better way, the excellent *Simplified Wrapper and
+Interface Generator*, better known as [SWIG](http://www.swig.org/). In this
+series of posts we'll have a crash course in typical SWIG usage, and then a
+deep dive on the using the SWIG runtime header to allow for tight, seamless
+integration of C/C++ code written specifically to accelerate Python modules.
 
 ## SWIG
 
-SWIG is the 8th-Wonder of the software world, it takes an incredibly
+*If you're already familiar with SWIG, feel free to skip to Part 2*
+
+SWIG is the 8th Wonder of the software world, it takes an incredibly
 complicated job and makes it a transparent part of your build process. SWIG
-seamlessly integrates C and C++ routines into any of a dozen target languages
+cleanly integrates C and C++ routines into any of a dozen target languages
 using their native ABIs and foreign function interfaces. For many real-world
 use cases, not trivial example code, SWIG can do this out-of-the-box with
 barely any configuration whatsoever.
 
 Unlike the C&#8209;Extension API, SWIG has top-notch documentation full of
-example code and extensive refrence material. This is not going to be a general
-purpose SWIG tutorial, and the reader is fully expected to be able to Ctrl-F
-their way through the SWIG docs for any material they're unfamiliar with.
+example code and extensive refrence material. This post is not a substitute for
+that documentation, it's here to rapidly get the reader up to speed with the
+bare-minimum required to follow along with the other posts in the series. Let's
+begin our journey.
 
 {{< img src="walk"  style="mix-blend-mode: multiply; width: 65%; " />}}
 
-Figure 1 contains a trivial data structure and interface file, we'll be working
-with them for awhile so work through any questions you have before moving past
-them.
+Figure 1 describes two files. The first is a simple C++ header containing a
+[POD](https://en.wikipedia.org/wiki/Passive_data_structure) struct. All
+C&#8209;esque code for these examples will be C++, but the exact same
+principles hold when working with pure C. The second file is called the
+*interface* file, and it's how we're going to instruct SWIG to build all the
+necessary code to interact with Python.
 
 {{< collapse label="Figure 1">}}
-In this post, all C-ish code is C++. There are no differences *for SWIG* when
-working in a pure C codebase. All field names are strictly for flavor.
+All names are strictly for flavor.
 ```C++
 // Agent.hpp
+#include <stdint>
+#include <string>
+
 struct AgentStatusUpdate {
   int agent_id;
   float health;

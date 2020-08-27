@@ -1,10 +1,10 @@
 <section class="collapsible">
-  <button onclick="collapseToggle(this)" class="collapse-button {{ if (.Get "label") }}button-label{{ else}}button-ornament{{end}}">
-    {{ if (.Get "label") }}
-      {{ .Get "label" }}
-    {{ else }}
-      &#128604;
-    {{ end }}
+  <button onclick="collapseToggle(this)" class="collapse-button">
+    <p class="collapse-button-inner {{ if (.Get "label") }}button-label{{ else}}button-ornament{{end}}">
+      {{ if (.Get "label") }}
+        {{ .Get "label" }}
+      {{ end }}
+    </p>
   </button>
   <div class="collapse-div">
     <div class="collapse-inner">
