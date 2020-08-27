@@ -39,8 +39,6 @@
     <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/Alphabet-of-Children.css">
     <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/Symbola.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700|Alegreya:400,i,b,bi|Averia+Libre:400,i,b,bi">
-    {{ $hs_style := resources.Get "css/highlight.css" | minify | fingerprint }}
-    <link rel="stylesheet" href="{{ $hs_style.Permalink }}">
     <link href="{{ "index.xml" | relURL }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}">
   </head>
 
