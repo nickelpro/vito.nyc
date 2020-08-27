@@ -7,19 +7,20 @@ $light-gray: #e5e5e5 !default;
   border-style: none;
   display: inline-block;
   background: none;
-  color: $dark-gray;
   outline: none;
   text-align: center;
   position: relative;
 }
 
 .button-ornament {
-  font-size: 2rem;
+  color: $dark-gray;
+  font-size: 1.75rem;
   margin: 0 0 0.3rem 0;
   font-family: Symbola;
 }
 
 .button-label {
+  color: $black;
   font-size: 1.2rem;
   font-style: italic;
   margin: 0.75rem 0;
@@ -56,9 +57,8 @@ $light-gray: #e5e5e5 !default;
 }
 
 .collapse-div {
-    transition: height 0.4s;
-    height: 0;
-    overflow: hidden;
+  height: 0;
+  overflow: hidden;
 }
 
 .collapse-inner {

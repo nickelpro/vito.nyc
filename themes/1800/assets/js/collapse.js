@@ -7,6 +7,9 @@ function collapseToggle(el) {
     var inner = collapseDiv.getElementsByClassName('collapse-inner')[0];
     var height = inner.clientHeight / parseFloat(getComputedStyle(
         document.querySelector('body'))['font-size'])
-    collapseDiv.style.height = height + 1 + "rem";
+    height++;
+    collapseDiv.style.height = height + "rem";
+    collapseDiv.style.transitionDuration = Math.max(height/100, 0.4) + "s";
+    console.log("Transition is: " + collapseDiv.style.transitionDuration);
   }
 }

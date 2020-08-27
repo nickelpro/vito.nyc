@@ -13,8 +13,7 @@ six-hundred fifty words. Ultimately the essay needed to highlight why I was a
 good choice to admit to these prestigious institutions, not educate the reader
 about submarines.
 
-{{< img src="ship" style="width: 35%; float: right;">}}
-{{< /img >}}
+{{< img src="ship" style="width: 35%; float: right;" />}}
 
 The result is not a factually accurate account of nuclear reactors, submarines,
 Chief Holman, or for that matter myself. If you know anything about these
@@ -53,8 +52,7 @@ Control Division Chief enters the control room and takes station behind me. He
 is here to judge my performance, it’s now my job to bring my reactor back to
 life.
 
-{{< img src="submarine" style="width=100%; border-radius:2em;" >}}
-{{< /img >}}
+{{< img src="submarine" style="width=100%; border-radius:2em;" />}}
 
 The process feels automatic as muscle memory and instinct take over,
 continually cross-checked with evidence from my indications. Three years ago I
@@ -77,8 +75,7 @@ approach.
 
 I give the order, “Answer one-hundred percent power,” and the race is on.
 
-{{< img src="squid" style="width: 40%; float: right; box-shadow: 0 0 0 0.29em #303030; border: 0.05em solid FloralWhite; margin: 2.2em 0.34em 0.34em 0.34em;">}}
-{{< /img >}}
+{{< img src="squid" style="width: 40%; float: right; box-shadow: 0 0 0 0.29em #303030; border: 0.05em solid FloralWhite; margin: 2.2em 0.34em 0.34em 0.34em;" />}}
 
 Throttleman wings open his throttles and the main engines gain hundreds of RPM.
 I slam my coolant pumps into their fastest speeds and lock my controls to draw
