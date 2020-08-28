@@ -9,7 +9,7 @@ function collapseToggle(el) {
         document.querySelector('body'))['font-size'])
     height++;
     collapseDiv.style.height = height + "rem";
-    collapseDiv.style.transitionDuration = Math.max(height/100, 0.4) + "s";
+    collapseDiv.style.transitionDuration = Math.max(height/80, 0.4) + "s";
     console.log("Transition is: " + collapseDiv.style.transitionDuration);
   }
 }

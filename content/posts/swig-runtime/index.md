@@ -65,14 +65,14 @@ begin to address C++ codebases which will have to first build a C wrapper.
 Thankfully there is a better way, the excellent *Simplified Wrapper and
 Interface Generator*, better known as [SWIG](http://www.swig.org/). In this
 series of posts we'll have a crash course in typical SWIG usage, and then a
-deep dive on the using the SWIG runtime header to allow for tight, seamless
+deep dive on using the SWIG runtime header to allow for tight, seamless
 integration of C/C++ code written specifically to accelerate Python modules.
 
 ## SWIG
 
 *If you're already familiar with SWIG, feel free to skip to Part 2*
 
-SWIG is the 8th Wonder of the software world, it takes an incredibly
+SWIG is the 8th Wonder of the Software World, it takes an incredibly
 complicated job and makes it a transparent part of your build process. SWIG
 cleanly integrates C and C++ routines into any of a dozen target languages
 using their native ABIs and foreign function interfaces. For many real-world
@@ -82,34 +82,40 @@ barely any configuration whatsoever.
 Unlike the C&#8209;Extension API, SWIG has top-notch documentation full of
 example code and extensive refrence material. This post is not a substitute for
 that documentation, it's here to rapidly get the reader up to speed with the
-bare-minimum required to follow along with the other posts in the series. Let's
-begin our journey.
+bare-minimum required to follow along with the other posts in the series. With
+that said, let's begin our journey.
 
-{{< img src="walk"  style="mix-blend-mode: multiply; width: 65%; " />}}
+{{< img src="walk"  imgstyle="mix-blend-mode: multiply;" style="width: 65%; margin: 0 auto 1rem;" />}}
 
-Figure 1 describes two files. The first is a simple C++ header containing a
+Figure 1 contains two files. The first is a simple C++ header containing a
 [POD](https://en.wikipedia.org/wiki/Passive_data_structure) struct. All
 C&#8209;esque code for these examples will be C++, but the exact same
 principles hold when working with pure C. The second file is called the
 *interface* file, and it's how we're going to instruct SWIG to build all the
 necessary code to interact with Python.
 
+*All code examples can also be found in
+[this companion repository](https://github.com/nickelpro), along with build
+files.*
+
 {{< collapse label="Figure 1">}}
 All names are strictly for flavor.
 ```C++
 // Agent.hpp
-#include <stdint>
+#include <cstdint>
 #include <string>
 
-struct AgentStatusUpdate {
-  int agent_id;
+struct AgentUpdate {
+  int id;
+  std::string cover_name;
   float health;
   std::uint64_t secret;
-  std::string message;
 };
 ```
+
 I typically prefix SWIG-generated modules with "C" to make them easy to tell
 apart at a glance and easy to add to *.gitignore*.
+
 ```C++
 // Agent.i
 %module CAgent
@@ -123,3 +129,54 @@ apart at a glance and easy to add to *.gitignore*.
 %include "Agent.hpp"
 ```
 {{< /collapse >}}
+
+Before we explore the interface file further, try building these files to see
+what happens. For Python the SWIG command to use will be:
+
+`swig -c++ -python -py3 Agent.i`
+
+The switches here do what you expect, configuring SWIG to accept C++ as input
+(instead of C), and produce a Python Extension (specifically Python 3) as
+output. The extensions consists of two files, *CAgent.py* and *Agent_wrap.cxx*.
+
+If you start Python and try to import CAgent right now, you'll get an import
+error for a module called *_CAgent*. *CAgent.py* is a proxy for the actual
+extension, *Agent_wrap.cxx*, which we still need to build. How you choose to
+build this is up to you and your workflow, the following command will build the
+extension if you're using the CMakeLists.txt included with the companion repo:
+
+`cmake . && cmake --build .`
+
+{{< collapse >}}
+There are _many_ ways to build C/C++ projects and Python extensions, the
+companion repo uses cmake and it's my preferred workflow. Python's distutils is
+the official recommended path for building extensions.
+
+Whatever you choose, the build must produce a shared library named:
+
+`_[module_name].[ext]`
+
+Where "[module_name]" is the same as the module name
+of specified in the interface file, and "[ext]" is "pyd" on Windows and "so"
+on other platforms.
+{{< /collapse >}}
+
+Now open a Python REPL in the same folder that you've built the extension and
+`import CAgent`. You can create an `AgentUpdate` object and play with it, just
+like a native Python class. Do `AgentUpdate` objects act the way you expect them
+to? What are the differences from a normal Python object? *Hint: Check out the
+\_\_dict\_\_*.
+
+
+## Getting Classy
+
+{{<  img src="king" imgstyle="mix-blend-mode: multiply;" style="width:40%; float: left; margin: 1.5rem 0.2rem 1rem 0;"/>}}
+
+Normally this is the part of the tutorial where we add a second layer of
+complexity to the material introduced in the first section. But thanks to SWIG,
+there is no addtional complexity. Classes, methods, and functions all work
+identically to the basic POD we're already familiar with.
+
+Figure 2 adds an implementation file, *Agent.cpp*, as a matter of good C++
+practice not necessity. SWIG only needs to see declarations, not definitions,
+so it doesn't care about this file.

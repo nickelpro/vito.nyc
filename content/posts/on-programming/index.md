@@ -61,7 +61,7 @@ This is from a program that draws a square
 I'd like you to compare that to some code in the same programming language
 from my good friend Alex.
 
-{{< img src="alexcode" >}}
+{{< img src="alexcode" imgstyle="margin: 0 auto;">}}
 This is from a program that does not draw a square
 {{< /img >}}
 
@@ -123,7 +123,7 @@ Why doesn't the carpenter need an internal model of wood? Or writers of story?
 Why don't we talk about artists needing an internal model of
 [cubism](https://en.wikipedia.org/wiki/Cubism)?
 
-{{< img src="cubism" >}}
+{{< img src="cubism" imgstyle="margin: 0 auto;">}}
 Picasso mapped **people** to an **internal model of cubes**
 {{< /img >}}
 
