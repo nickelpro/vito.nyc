@@ -1,14 +1,20 @@
 <section class="collapsible">
   <button onclick="collapseToggle(this)" class="collapse-button">
-    <p class="collapse-button-inner {{ if (.Get "label") }}button-label{{ else}}button-ornament{{end}}">
-      {{ if (.Get "label") }}
-        {{ .Get "label" }}
-      {{ end }}
-    </p>
+    <span class="collapse-left"></span>
+    <span class="collapse-center">
+      <p class="{{ if (.Get "label") }}button-label{{ else}}button-ornament{{end}}">
+        {{ if (.Get "label") }}
+          {{ .Get "label" }}
+        {{ end }}
+      </p>
+    </span>
+    <span class="collapse-right"></span>
   </button>
   <div class="collapse-div">
     <div class="collapse-inner">
       {{ .Inner | markdownify }}
+      <button onclick="collapseClose(this)" class="collapse-close">
+      </button>
     </div>
   </div>
 </section>

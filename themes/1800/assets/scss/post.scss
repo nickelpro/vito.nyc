@@ -47,4 +47,12 @@ figcaption {
   color: #525252;
 }
 
+pre {
+  border-radius: 1rem;
+}
+
+p>code {
+  color: rgb(177, 0, 35);
+}
+
 @import 'collapse.scss'

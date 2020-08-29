@@ -8,14 +8,23 @@ $light-gray: #e5e5e5 !default;
   background: none;
   outline: none;
   width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
-.collapse-button:hover {
+.collapse-close {
+  border-style: none;
+  background: none;
+  outline: none;
+  width: 100%;
+}
+
+.collapse-button:hover, .collapse-close:hover {
   cursor: pointer;
 }
 
 .button-ornament {
-  margin: 0 0 0.4rem;
+  margin: 0.1rem 0;
 }
 
 .button-ornament::before{
@@ -29,15 +38,44 @@ $light-gray: #e5e5e5 !default;
   color: $black;
   font-size: 1.2rem;
   font-style: italic;
-  margin: 0.75rem 0;
+  margin: 0.4rem 0;
   font-family: Essays1743;
 }
 
-.collapse-button-inner {
+.collapse-left, .collapse-right {
+  display: flex;
+  width: 20%;
+}
+
+.collapse-right {
+  justify-content: flex-end;
+}
+
+.collapse-center {
+  display: flex;
+  width: 60%;
+  justify-content: center;
+}
+
+.collapse-right::after {
+  font-family: Symbola;
+  content: "\2BAF";
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin: 0.5rem 0.5rem 0;
+  color: $dark-gray;
+}
+
+.collapse-close::after{
+  font-family: Essays1743;
+  content: "X";
+  font-size: 1.3rem;
+  color: $dark-gray;
+  margin: 0.2rem 0 0.8rem;
   display: inline-block;
 }
 
-.collapse-button-inner::after {
+.collapse-center p::after {
   content: "";
   width: 0;
   display: block;
@@ -49,7 +87,7 @@ $light-gray: #e5e5e5 !default;
   transition: width 0.3s;
 }
 
-.collapse-button:hover .collapse-button-inner::after {
+.collapse-button:hover .collapse-center p::after {
   width: 100%;
 }
 
@@ -70,8 +108,4 @@ $light-gray: #e5e5e5 !default;
   text-align: left;
   font-size: 0.9rem;
   margin: 0 1rem;
-}
-
-.collapse-inner pre {
-  border-radius: 1rem;
 }
