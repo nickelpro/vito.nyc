@@ -2,7 +2,7 @@
 title: "The Undocumented SWIG"
 subtitle: "Building High Performance Integrated Python Extensions"
 date: 2020-08-26T13:46:15-04:00
-draft: true
+draft: false
 ---
 
 For those who have never ventured into the dark underworld of the Python
@@ -64,13 +64,15 @@ begin to address C++ codebases which will have to first build a C wrapper.
 
 Thankfully there is a better way, the excellent *Simplified Wrapper and
 Interface Generator*, better known as [SWIG](http://www.swig.org/). In this
-series of posts we'll take a crash course in typical SWIG usage, and then a
-deep dive into using the SWIG runtime header to allow for tight, seamless
+three part series we'll take a crash course in typical SWIG usage, discuss some
+advanced features like typemaps, templates, and ownership semantics, and then
+do a deep dive into using the SWIG runtime header to allow for tight, seamless
 integration of C/C++ code written specifically to accelerate Python modules.
 
 ## Introducing SWIG
 
-*If you're already familiar with SWIG, feel free to skip to Part 2*
+<!--- *If you're already familiar with SWIG, feel free to skip to
+Part 2* -->
 
 SWIG is the 8th Wonder of the Software World, it takes an incredibly
 complicated job and makes it a transparent part of your build process. SWIG
@@ -95,8 +97,8 @@ principles hold when working with pure C. The second file is called the
 necessary code to interact with Python.
 
 *All code examples can also be found in
-[this companion repository](https://github.com/nickelpro), along with build
-files.*
+[this companion repository](https://github.com/nickelpro/Undocumented-SWIG),
+along with build files.*
 
 {{< collapse label="Figure 1">}}
 All names are strictly for flavor.
@@ -107,7 +109,7 @@ All names are strictly for flavor.
 
 struct AgentUpdate {
   int id;
-  std::string cover_name;
+  std::string call_sign;
   float health;
   std::uint64_t secret;
 };
@@ -130,7 +132,7 @@ We'll explore this interface file in more detail in the next section.
 {{< /collapse >}}
 
 Before we explore the interface file further, try building these files to see
-what happens. For Python the SWIG command to use will be:
+what happens. For Python the SWIG command to use is:
 
 `swig -c++ -python -py3 Agent.i`
 
@@ -138,7 +140,7 @@ The switches here do what you expect, configuring SWIG to accept C++ as input
 (instead of C), and produce a Python Extension (specifically Python 3) as
 output. The extensions consists of two files, *CAgent.py* and *Agent_wrap.cxx*.
 
-If you start Python and try to import CAgent right now, you'll get an import
+If you start Python and try to `import CAgent` right now, you'll get an import
 error for a module called *_CAgent*. *CAgent.py* is a proxy for the actual
 extension, *Agent_wrap.cxx*, which we still need to build. How you choose to
 build this is up to you and your workflow, the following command will build the
@@ -203,6 +205,8 @@ the preprocessor places a copy of the include'd file into the unit. Here
 we're including standard SWIG [typemaps](http://www.swig.org/Doc4.0/Typemaps.html)
 for interacting C++ strings and the standard integer types.
 
+{{<  img src="cog" imgstyle="mix-blend-mode: multiply;" style="width:30%; float: right; margin: 0 0 0 0.2rem;"/>}}
+
 This raises the awkward question of "What is a typemap?" For now, I'm going to
 quote SWIG's documentation:
 
@@ -266,19 +270,20 @@ to the interface file**.
 
 struct AgentUpdate {
   int id;
-  std::string cover_name;
+  std::string call_sign;
   float health;
   std::uint64_t secret;
 };
 
 class SecretAgent {
 public:
+  std::string call_sign;
+
   SecretAgent(int id);
   AgentUpdate generate_update();
 
 private:
   const int id;
-  std::string cover_name;
   float health;
   std::default_random_engine random_engine;
   std::uniform_int_distribution<std::uint64_t> secret_generator;
@@ -293,7 +298,7 @@ doesn't support C++20 yet you can rework `generate_update()` to initialize the
 // Agent.cpp
 #include "Agent.hpp"
 
-SecretAgent::SecretAgent(const int id) : id(id), cover_name("Smith"),
+SecretAgent::SecretAgent(const int id) : id(id), call_sign("Spy"),
     health(100.0), random_engine(std::random_device{}()) {}
 
 AgentUpdate SecretAgent::generate_update() {
@@ -321,18 +326,103 @@ modify the `SecretAgent`'s C++ source code. For code that only wants to *call
 into* C/C++, and does not need to *call back into* Python, this is as
 complicated as SWIG gets for most use cases.
 
-As a fun exercise, Figure 3 uses these same techniques more extensively.
-Nothing new is introduced, the same concepts are just excercised more widely.
+As a fun exercise, Figure 3 uses these same techniques to add a combat function
+to the `SecretAgent` class, with an enum return type.
 
 {{< collapse label="Figure 3" >}}
-Stuff
+*Still no changes needed for Agent.i*
+```C++
+// Agent.hpp
+#include <cstdint>
+#include <string>
+#include <random>
+
+struct AgentUpdate {
+  int id;
+  std::string call_sign;
+  float health;
+  std::uint64_t secret;
+};
+
+class SecretAgent {
+public:
+  std::string call_sign;
+
+  SecretAgent(int id);
+  SecretAgent(int id, const std::string& call_sign);
+
+  AgentUpdate generate_update();
+  enum combat_result {
+    COMBAT_DEFEAT,
+    COMBAT_VICTORY,
+    COMBAT_TIE,
+  };
+  combat_result combat(SecretAgent& other);
+
+private:
+  const int id;
+  float health;
+  std::default_random_engine random_engine;
+  std::uniform_int_distribution<std::uint64_t> secret_generator;
+  std::uniform_real_distribution<float> combat_generator;
+};
+```
+
+SWIG doesn't usually differentiate between pass-by-value, reference, and
+pointer. SWIG's docs explore this more fully, but as a rule of thumb these
+things Just Work™.
+
+```C++
+// Agent.cpp
+#include "Agent.hpp"
+
+SecretAgent::SecretAgent(const int id) : call_sign("Spy"), id(id),
+    health(100.0), random_engine(std::random_device{}()),
+    combat_generator(0, 100) {}
+
+SecretAgent::SecretAgent(const int id, const std::string& call_sign) :
+    call_sign(call_sign), id(id), health(100.0),
+    random_engine(std::random_device{}()), combat_generator(0, 100) {}
+
+AgentUpdate SecretAgent::generate_update() {
+  return AgentUpdate {
+    .id = id,
+    .call_sign = call_sign,
+    .health = health,
+    .secret = secret_generator(random_engine)
+  };
+}
+
+SecretAgent::combat_result SecretAgent::combat(SecretAgent& other) {
+  other.health -= combat_generator(random_engine);
+  if(other.health > 0)
+    health -= combat_generator(random_engine);
+  else
+    return SecretAgent::COMBAT_VICTORY;
+  if(health > 0)
+    return SecretAgent::COMBAT_TIE;
+  return SecretAgent::COMBAT_DEFEAT;
+}
+```
+
+*RunAgencySim.py* is a fun script in the companion repo that illustrates the
+usage of the capabilities added here.
 {{< /collapse >}}
+
+Of note, the `combat_result` member enum is translated to a set of member
+variables for the Python class, which are mapped to globals defined in the
+underlying shared library. This means they're accessed almost identically to
+the enum members in C++.
 
 ## What's Next
 
-None of techniques discussed in this post are Python specific, they can be
+None of the techniques discussed in this post are Python specific, they can be
 applied to any of the target languages that SWIG supports. In the next part we'll
 talk a little more about typemaps and using them to interact with more
 complex types than integers and strings. This involves calling `Python.h`
 specific functions, and will begin our descent into the less traveled
 corners of SWIG usage.
+
+
+*The images used in this post are public domain, made available thanks to the
+invaluable work of Liam Quin at [fromoldbooks.org](https://www.fromoldbooks.org/)*
