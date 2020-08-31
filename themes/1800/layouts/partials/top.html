@@ -50,7 +50,7 @@
       {{ (resources.Get "css/Essays1743.css" | minify).Content | safeCSS }}
       {{ (resources.Get "css/Symbola-Lite.css" | minify).Content | safeCSS }}
     </style>
-    <script>{{ (resources.Get "js/collapse.js").Content | safeJS }}</script>
+    <script>{{ (resources.Get "js/collapse.js" | minify).Content | safeJS }}</script>
     {{- end }}
 
     <style>{{ (resources.Get "css/Google-Fonts.css" | minify).Content | safeCSS }}</style>
