@@ -39,15 +39,22 @@
     {{ end }}
     {{ $main_style := resources.Get "scss/post.scss" | toCSS (dict "outputStyle" "compressed") | fingerprint }}
     <link rel="stylesheet" href="{{ $main_style.Permalink }}">
-    {{ $collapse_js := resources.Get "js/collapse.js" | minify | fingerprint }}
-    <script src="{{ $collapse_js.Permalink }}"></script>
+    <link rel="preload" as="font" href="../../fonts/Alphabet-of-Children/Alphabet-of-Children.woff2" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="../../fonts/Essays1743/Essays1743.woff2" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="../../fonts/Alegreya/Alegreya-Regular.woff2" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="../../fonts/Alegreya/Alegreya-Italic.woff2" type="font/woff2" crossorigin>
+
+    <style>
+      {{ (resources.Get "css/Alegreya.css" | minify).Content | safeCSS }}
+      {{ (resources.Get "css/Alphabet-of-Children.css" | minify).Content | safeCSS }}
+      {{ (resources.Get "css/Essays1743.css" | minify).Content | safeCSS }}
+      {{ (resources.Get "css/Symbola-Lite.css" | minify).Content | safeCSS }}
+    </style>
+    <script>{{ (resources.Get "js/collapse.js").Content | safeJS }}</script>
     {{- end }}
 
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/Essays1743.css">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/Alphabet-of-Children.css">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/Symbola.css">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/Alegreya.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro%7CArvo:400,700%7CAveria+Libre:400,i,b,bi">
+    <style>{{ (resources.Get "css/Google-Fonts.css" | minify).Content | safeCSS }}</style>
+
     <link href="{{ "index.xml" | relURL }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->

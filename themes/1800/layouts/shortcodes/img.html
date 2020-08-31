@@ -1,4 +1,7 @@
 {{ $img := .Page.Resources.GetMatch (printf "*%s*" (.Get "src"))}}
+{{if (.Get "resize")}}
+  {{ $img = $img.Resize (.Get "resize") }}
+{{ end }}
 <figure style="text-align: center; position: relative; {{ .Get "style" | safeCSS }}">
   <img style="display: block; {{ .Get "imgstyle" | safeCSS }}" src="{{ $img.RelPermalink }}" alt="{{ .Get "alt" }}">
   {{if or (len .Inner) (.Get "caption")}}
