@@ -1,12 +1,12 @@
-<section class="collapsible">
+<aside class="collapsible">
   <button onclick="collapseToggle(this)" class="collapse-button">
     <span class="collapse-left"></span>
     <span class="collapse-center">
-      <p class="{{ if (.Get "label") }}button-label{{ else}}button-ornament{{end}}">
+      <span class="{{ if (.Get "label") }}button-label{{ else}}button-ornament{{end}}">
         {{ if (.Get "label") }}
           {{ .Get "label" }}
         {{ end }}
-      </p>
+      </span>
     </span>
     <span class="collapse-right"></span>
   </button>
@@ -17,4 +17,4 @@
       </button>
     </div>
   </div>
-</section>
+</aside>

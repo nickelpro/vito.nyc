@@ -1,6 +1,8 @@
 ---
 title: "The Undocumented SWIG"
 subtitle: "Building High Performance Integrated Python Extensions"
+description: "Deep dive into using SWIG to extend Python, Part 1 of 3"
+image: "social-media"
 date: 2020-08-26T13:46:15-04:00
 draft: false
 ---

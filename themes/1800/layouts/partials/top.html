@@ -14,7 +14,7 @@
     {{ hugo.Generator }}
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="{{ .Site.Author.name }}">
+    <meta name="author" content="{{ .Site.Author.fullname }}">
     <meta property="og:url" content="{{ .Permalink }}">
 
     {{ if .IsHome -}}
@@ -28,7 +28,15 @@
     <title>{{ .Title }} - {{ .Site.Title }}</title>
     <meta property="og:title" content="{{ .Title }} - {{ .Site.Title }}">
     <meta property="og:type" content="article">
+    <meta property="og:description" content="{{ .Description }}">
     <meta name="description" content="{{ .Description }}">
+    {{ if (.Params.Get "Image")}}
+      {{ $img := .Page.Resources.GetMatch (printf "*%s*" (.Params.Get "Image"))  }}
+      <meta property="og:image" content="{{ $img.Permalink }}">
+      <meta property="og:image:url" content="{{ $img.Permalink }}">
+      <meta property="og:image:width" content="{{ $img.Width }}">
+      <meta property="og:image:height" content="{{ $img.Height }}">
+    {{ end }}
     {{ $main_style := resources.Get "scss/post.scss" | toCSS (dict "outputStyle" "compressed") | fingerprint }}
     <link rel="stylesheet" href="{{ $main_style.Permalink }}">
     {{ $collapse_js := resources.Get "js/collapse.js" | minify | fingerprint }}
@@ -39,7 +47,7 @@
     <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/Alphabet-of-Children.css">
     <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/Symbola.css">
     <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/Alegreya.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700|Averia+Libre:400,i,b,bi">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro%7CArvo:400,700%7CAveria+Libre:400,i,b,bi">
     <link href="{{ "index.xml" | relURL }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->

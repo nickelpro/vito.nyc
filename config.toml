@@ -16,6 +16,7 @@ theme = "1800"
   jobTitle = "Deep Sea Noodle"
 
 [author]
+  fullname = "Nicholas Vito Gamberini"
   name = "Vito Gamberini"
 
 [markup.goldmark.renderer]
