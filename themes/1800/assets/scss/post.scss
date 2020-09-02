@@ -26,7 +26,11 @@ h1, h2, h3, h4, h5, h6 {
   content: "\2767";
 }
 
-h2::before {
+.post-subtitle {
+  font-size: 1.5rem;
+}
+
+article>h2::before {
   display: block;
   text-align: center;
   font-family: Symbola;

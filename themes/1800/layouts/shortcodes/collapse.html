@@ -1,5 +1,5 @@
 <aside class="collapsible">
-  <button onclick="collapseToggle(this)" class="collapse-button">
+  <button role="presentation" onclick="collapseToggle(this)" class="collapse-button">
     <span class="collapse-left"></span>
     <span class="collapse-center">
       <span class="{{ if (.Get "label") }}button-label{{ else}}button-ornament{{end}}">
@@ -13,7 +13,7 @@
   <div class="collapse-div">
     <div class="collapse-inner">
       {{ .Inner | markdownify }}
-      <button onclick="collapseClose(this)" class="collapse-close"></button>
+      <button role="presentation" onclick="collapseClose(this)" class="collapse-close"></button>
     </div>
   </div>
 </aside>

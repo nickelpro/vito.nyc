@@ -1,5 +1,7 @@
 ---
 title: "I Am the Reactor Operator"
+description: "A story about being a Navy Nuke"
+image: "social-media"
 date: 2020-08-25T22:58:23-04:00
 draft: false
 ---
