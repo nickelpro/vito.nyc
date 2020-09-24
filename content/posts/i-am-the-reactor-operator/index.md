@@ -101,5 +101,5 @@ I am the Reactor Operator.
 
 {{<fleuron>}}
 
-I was admitted NYU Tandon, and I'm forever grateful to the people who got me
+I was admitted to NYU Tandon, and I'm forever grateful to the people who got me
 there.

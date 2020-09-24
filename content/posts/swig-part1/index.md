@@ -279,15 +279,15 @@ struct AgentUpdate {
 
 class SecretAgent {
 public:
-  std::string call_sign;
+  std::string call_sign {"Spy"};
 
   SecretAgent(int id);
   AgentUpdate generate_update();
 
 private:
   const int id;
-  float health;
-  std::default_random_engine random_engine;
+  float health {100.0};
+  std::default_random_engine random_engine {std::random_device{}()};
   std::uniform_int_distribution<std::uint64_t> secret_generator;
 };
 ```
@@ -300,13 +300,12 @@ doesn't support C++20 yet you can rework `generate_update()` to initialize the
 // Agent.cpp
 #include "Agent.hpp"
 
-SecretAgent::SecretAgent(const int id) : id(id), call_sign("Spy"),
-    health(100.0), random_engine(std::random_device{}()) {}
+SecretAgent::SecretAgent(const int id) : id(id) {}
 
 AgentUpdate SecretAgent::generate_update() {
   return AgentUpdate {
     .id = id,
-    .cover_name = cover_name,
+    .call_sign = call_sign,
     .health = health,
     .secret = secret_generator(random_engine)
   };
@@ -348,7 +347,7 @@ struct AgentUpdate {
 
 class SecretAgent {
 public:
-  std::string call_sign;
+  std::string call_sign {"Spy"};
 
   SecretAgent(int id);
   SecretAgent(int id, const std::string& call_sign);
@@ -363,10 +362,10 @@ public:
 
 private:
   const int id;
-  float health;
-  std::default_random_engine random_engine;
+  float health {100.0};
+  std::default_random_engine random_engine {std::random_device{}()};
   std::uniform_int_distribution<std::uint64_t> secret_generator;
-  std::uniform_real_distribution<float> combat_generator;
+  std::uniform_real_distribution<float> combat_generator {0, 100};
 };
 ```
 
@@ -378,13 +377,10 @@ things Just Work™.
 // Agent.cpp
 #include "Agent.hpp"
 
-SecretAgent::SecretAgent(const int id) : call_sign("Spy"), id(id),
-    health(100.0), random_engine(std::random_device{}()),
-    combat_generator(0, 100) {}
+SecretAgent::SecretAgent(const int id) : id(id) {}
 
 SecretAgent::SecretAgent(const int id, const std::string& call_sign) :
-    call_sign(call_sign), id(id), health(100.0),
-    random_engine(std::random_device{}()), combat_generator(0, 100) {}
+    call_sign(call_sign), id(id) {}
 
 AgentUpdate SecretAgent::generate_update() {
   return AgentUpdate {
