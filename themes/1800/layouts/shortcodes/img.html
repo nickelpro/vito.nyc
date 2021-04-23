@@ -5,7 +5,7 @@
 <figure style="text-align: center; position: relative; {{ .Get "style" | safeCSS }}">
   <img style="display: block; {{ .Get "imgstyle" | safeCSS }}" src="{{ $img.RelPermalink }}" alt="{{ .Get "alt" }}">
   {{if or (len .Inner) (.Get "caption")}}
-	<figcaption>
+	<figcaption style="{{ .Get "figstyle" | safeCSS }}">
     {{ if eq (len .Inner) 0}}
       {{ .Get "caption" | markdownify }}
     {{ else }}
