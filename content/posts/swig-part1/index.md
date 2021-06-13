@@ -84,10 +84,10 @@ use cases, not trivial example code, SWIG can do this out-of-the-box with
 barely any configuration whatsoever.
 
 Unlike the C&#8209;Extension API, SWIG has top-notch documentation full of
-example code and extensive refrence material. This post is not a substitute for
-that documentation, it's here to rapidly get the reader up to speed with the
-bare-minimum required to follow along with the other posts in the series. With
-that said, let's begin our journey.
+example code and extensive reference material. This post is not a substitute
+for that documentation, it's here to rapidly get the reader up to speed with
+the bare-minimum required to follow along with the other posts in the series.
+With that said, let's begin our journey.
 
 {{< img src="walk" resize="1200x jpg q75" imgstyle="mix-blend-mode: multiply;" style="width: 65%; margin: 0 auto 1rem;" />}}
 
@@ -236,9 +236,9 @@ file in the interface, do we really need the interface file at all? If SWIG can
 parse C/C++ header files, why not just run it on the header directly?
 
 The answer is, you can! SWIG even defines a macro, `#define SWIG`, so you can
-place SWIG directives directly in the header file that will be ignored by
-your compiler's preprocessor but recognized by SWIG's. We seperate these
-directives into their own file as a matter of good practice, not necessity.
+place SWIG directives directly in the header file that will be ignored by your
+compiler's preprocessor but recognized by SWIG's. We separate these directives
+into their own file as a matter of good practice, not necessity.
 {{< /collapse >}}
 
 As mentioned earlier, there are far more powerful directives available than the
@@ -253,7 +253,7 @@ go.
 
 Normally this is the part of the tutorial where we add a second layer of
 complexity to the material introduced in the first couple sections. But thanks
-to SWIG, there is no addtional complexity. Classes, methods, and functions all
+to SWIG, there is no additional complexity. Classes, methods, and functions all
 work identically to the basic POD we're already familiar with.
 
 Figure 2 creates a proper class with a method; it also adds an implementation
@@ -415,11 +415,11 @@ the enum members in C++.
 ## What's Next
 
 None of the techniques discussed in this post are Python specific, they can be
-applied to any of the target languages that SWIG supports. In the next part we'll
-talk a little more about typemaps and using them to interact with more
+applied to any of the target languages that SWIG supports. In the next part
+we'll talk a little more about typemaps and using them to interact with more
 complex types than integers and strings. This involves calling `Python.h`
-specific functions, and will begin our descent into the less traveled
-corners of SWIG usage.
+specific functions, and will begin our descent into the less traveled corners
+of SWIG usage.
 
 
 *The images used in this post are public domain, made available thanks to the

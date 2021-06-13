@@ -7,7 +7,7 @@
         <header>What I'm Writing About</header>
         <table class="table-list">
           <tbody>
-            {{- range first 5 (where .Site.RegularPages "Section" "posts") -}}
+            {{- range first 5 (where site.RegularPages "Type" "=" "posts") -}}
               <tr class="flex">
                 <td class="blog-date"><time datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "Jan 02"}}</time></td>
                 <td class="blog-post btn"><a class="link" href="{{ .Permalink }}">{{ .Title }}</a></td>

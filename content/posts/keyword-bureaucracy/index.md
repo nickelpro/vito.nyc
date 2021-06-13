@@ -11,6 +11,10 @@ draft: false
 >
 > — Oscar Wilde
 
+_This post is was written rather hastily as a college essay writing assignment
+and not reflective of anything other than the imminent deadline. This note was
+added after is was graded._ 🙂
+
 Bureaucracy in the mind of the average American is typically a _prescriptive_
 arm of government. It is the clerk at the DMV, demanding yet one more proof of
 identity, or the stamp of approval from the county's Building Code Advisory
@@ -114,8 +118,8 @@ is: what can democracy _learn_ from the bureaucracy?
 
 ## Lessons of the Bureaucrat
 
-Far from the stereotype of a agencies bogged down by paperwork and procedure,
-the federal agencies move at a blazing speed compared to Congress. This is the
+Far from the stereotype of being bogged down by paperwork and procedure, the
+federal agencies move at a blazing speed compared to Congress. This is the
 prime take-away from the rise of the administrative state. Bureaucracies exist
 not to slow-down government, but rather arise to signal the procedures of
 government are failing to respond to dynamic situations.
