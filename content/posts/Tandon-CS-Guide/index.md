@@ -75,4 +75,4 @@ There's some overlap here with 2204. This course also requires boolean algebra a
 
 And that's what I've got. I'm not a CS major so I've got no advice for the courses that typically only CS majors take like CS-UY 2413, Design and Analysis of Algorithms. If anyone has interviewed out of it or can guess at the requirements I would love to add it.
 
-Also, for any course you skip ever, save the recommendation. I mentioned this once already but it bears repeating. I'm in a month long back and forth with the CSE department right now about whether I had permission to skip all those courses (they forgot, I guess) and if I handn't saved all the emails I would have been screwed.
+Also, for any course you skip ever, save the recommendation. I mentioned this once already but it bears repeating. I'm in a month long back and forth with the CSE department right now about whether I had permission to skip all those courses (they forgot, I guess) and if I hadn't saved all the emails I would have been screwed.

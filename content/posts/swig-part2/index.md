@@ -1,6 +1,8 @@
 ---
 title: "The Undocumented SWIG, Lot #2"
 subtitle: "Building High Performance Integrated Python Extensions"
+description: "Deep dive into using SWIG to extend Python, Part 2 of 3"
+image: "social-media"
 date: 2020-08-29T16:34:32-04:00
 draft: true
 ---
@@ -29,5 +31,5 @@ The purpose of typemaps is all in the name, they're a map of the type system.
 Typemaps are the instructions for how to take an integer, string, vector, or
 whatever data we've got, and transform it into a `PyObject`. More
 fundamentally, a typemap is a set of one or more C/C++ source code *templates*,
-which SWIG manifests into the generated result wherever a conversions needs to
+which SWIG manifests into the generated result wherever a conversion needs to
 happen, such as calling methods or functions that use a given type.

@@ -159,9 +159,8 @@ Whatever you choose, the build must produce a shared library named:
 
 `_[module_name].[ext]`
 
-Where "[module_name]" is the same as the module name
-of specified in the interface file, and "[ext]" is "pyd" on Windows and "so"
-on other platforms.
+Where "[module_name]" is the same as the module name specified in the interface
+file, and "[ext]" is "pyd" on Windows and "so" on other platforms.
 {{< /collapse >}}
 
 Now open a Python REPL in the same folder that you've built the extension and
