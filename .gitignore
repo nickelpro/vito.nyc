@@ -2,3 +2,4 @@ public
 resources
 .vscode
 sync.sh
+.hugo_build.lock
