@@ -8,7 +8,7 @@ draft: false
 
 You are programming a tool in C++. Not a huge tool, not a tool where you care
 enough about performance to say, use faster data structures than those provided
-by the standard library, but one where you feel compelled add some useful
+by the standard library, but one where you feel compelled to add some useful
 options. After a brief and uninspiring survery of the field you settle on the
 old standard for implementing program settings, you're going to parse `argv`.
 
@@ -40,11 +40,19 @@ The requirements for my `argv` handler were thus:
   * No outside dependencies
   * Trivial to add and remove settings
 
-Since I want a POD struct at the end of this, that's as a good a place to start
+Since I want a POD struct at the end of this, that's as good a place to start
 as any:
 
 {{< collapse label="Figure 1">}}
 ```cpp
+// These are the headers we'll be using in this post
+#include <functional>
+#include <iostream>
+#include <optional>
+#include <stdexcept>
+#include <string>
+#include <unordered_map>
+
 // For example code only; only heathens do this in real life
 using namespace std;
 
@@ -121,26 +129,28 @@ and the second being the string argument:
 
 {{< collapse label="Figure 4">}}
 ```cpp
-typedef function<void(MySettings&, string&)> OneArgHandle;
+typedef function<void(MySettings&, const string&)> OneArgHandle;
 
 #define S(str, f, v) \
-  {str, [](MySettings& s, string& arg) { s.f = v; }}
+  {str, [](MySettings& s, const string& arg) { s.f = v; }}
 
 const unordered_map<string, OneArgHandle> OneArgs {
-    // Writing out the whole lambda
-  {"-o", [](MySettings& s, string& arg) { s.outfile = arg; }},
+  // Writing out the whole lambda
+  {"-o", [](MySettings& s, const string& arg) {
+    s.outfile = arg;
+  }},
 
-    // Using the macro
+  // Using the macro
   S("--output", outfile, arg),
 
-    // Performing string -> int conversion
+  // Performing string -> int conversion
   S("--value", value, stoi(arg)),
 };
 #undef S
 ```
 {{< /collapse >}}
 
-It should be obvious from this point that this approach can be further iterated
+It should be clear from this point that this approach can be further iterated
 to support flags with arbitrary numbers of arguments and parsing complexity.
 All that's left to do is put the pieces together and actually parse `argv`.
 
@@ -183,7 +193,8 @@ MySettings parse_settings(int argc, const char* argv[]) {
 
     // No, has infile been set yet?
     else if(!settings.infile)
-      settings.infile = argv[i] // No, use this as the input file
+      // No, use this as the input file
+      settings.infile = argv[i];
 
     // Yes, possibly throw here, or just print an error
     else
