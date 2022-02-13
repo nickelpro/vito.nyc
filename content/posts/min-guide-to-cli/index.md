@@ -80,11 +80,11 @@ My preferred way to switch on strings is to use a map to `std::function`:
 typedef function<void(MySettings&)> NoArgHandle;
 
 /**
- * We can also user a function pointer here, ie:
- * typedef function<void(MySettings&)> NoArgHandle;
+ * We can also use a function pointer here, ie:
+ * typedef void (*NoArgHandle)(MySettings&);
  *
  * If we're only ever going to use plain functions
- * or capture-less lambdas as handler, the plain
+ * or capture-less lambdas as handles, the plain
  * function pointer is good and marginally more performant.
  */
 
@@ -226,3 +226,5 @@ specific framework or a single header file copied from Dr. Dobbs circa 2003.
 Dependencies are not necessarily bad things, but C++ is not Javascript.
 There's no need to pull in outside frameworks to solve a problem we can hack in
 a few dozens lines of code ourselves.
+
+See also: [*Addendum: Handling Positional Arguments*](/posts/min-guide-to-cli-addenda)
