@@ -79,6 +79,15 @@ My preferred way to switch on strings is to use a map to `std::function`:
 ```cpp
 typedef function<void(MySettings&)> NoArgHandle;
 
+/**
+ * We can also user a function pointer here, ie:
+ * typedef function<void(MySettings&)> NoArgHandle;
+ *
+ * If we're only ever going to use plain functions
+ * or capture-less lambdas as handler, the plain
+ * function pointer is good and marginally more performant.
+ */
+
 const unordered_map<string, NoArgHandle> NoArgs {
   {"--help", [](MySettings& s) { s.help = true; }},
   {"-h", [](MySettings& s) { s.help = true; }},
