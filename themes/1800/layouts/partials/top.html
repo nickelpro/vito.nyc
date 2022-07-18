@@ -25,8 +25,8 @@
     {{ $main_style := resources.Get "scss/1800.scss" | toCSS (dict "outputStyle" "compressed") | fingerprint }}
     <link rel="stylesheet" href="{{ $main_style.Permalink }}">
     {{- else -}}
-    <title>{{ .Title }} - {{ .Site.Title }}</title>
-    <meta property="og:title" content="{{ .Title }} - {{ .Site.Title }}">
+    <title>{{ .Title | htmlUnescape | safeHTML }} - {{ .Site.Title }}</title>
+    <meta property="og:title" content="{{ .Title | htmlUnescape | safeHTML }} - {{ .Site.Title }}">
     <meta property="og:type" content="article">
     <meta property="og:description" content="{{ .Description }}">
     <meta name="description" content="{{ .Description }}">

@@ -19,7 +19,8 @@ $light-gray: #e5e5e5 !default;
   width: 100%;
 }
 
-.collapse-button:hover, .collapse-close:hover {
+.collapse-button:hover,
+.collapse-close:hover {
   cursor: pointer;
 }
 
@@ -27,7 +28,7 @@ $light-gray: #e5e5e5 !default;
   margin: 0.1rem 0;
 }
 
-.button-ornament::before{
+.button-ornament::before {
   color: $dark-gray;
   font-size: 1.75rem;
   font-family: Symbola;
@@ -42,7 +43,8 @@ $light-gray: #e5e5e5 !default;
   font-family: Essays1743;
 }
 
-.collapse-left, .collapse-right {
+.collapse-left,
+.collapse-right {
   display: flex;
   width: 20%;
 }

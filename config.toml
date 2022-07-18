@@ -23,4 +23,4 @@ theme = "1800"
   unsafe = true
 
 [markup.highlight]
-  style = "dracula"
+  noClasses = false

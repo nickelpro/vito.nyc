@@ -89,7 +89,7 @@ for that documentation, it's here to rapidly get the reader up to speed with
 the bare-minimum required to follow along with the other posts in the series.
 With that said, let's begin our journey.
 
-{{< img src="walk" resize="1200x jpg q75" imgstyle="mix-blend-mode: multiply;" style="width: 65%; margin: 0 auto 1rem;" />}}
+{{< img src="walk" resize="1200x webp q90" imgstyle="mix-blend-mode: multiply;" style="width: 65%; margin: 0 auto 1rem;" />}}
 
 Figure 1 contains two files. The first is a simple C++ header containing a
 [POD](https://en.wikipedia.org/wiki/Passive_data_structure) struct. All
@@ -206,7 +206,7 @@ the preprocessor places a copy of the include'd file into the unit. Here
 we're including standard SWIG [typemaps](http://www.swig.org/Doc4.0/Typemaps.html)
 for interacting C++ strings and the standard integer types.
 
-{{<  img src="cog" resize="500x jpg q75" imgstyle="mix-blend-mode: multiply;" style="width:30%; float: right; margin: 0 0 0 0.2rem;"/>}}
+{{<  img src="cog" resize="500x webp q90" imgstyle="mix-blend-mode: multiply;" style="width:30%; float: right; margin: 0 0 0 0.2rem;"/>}}
 
 This raises the awkward question of "What is a typemap?" For now, I'm going to
 quote SWIG's documentation:

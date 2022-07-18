@@ -172,6 +172,10 @@ h6 {
   font-size: 1rem;
 }
 
+code {
+  font-family: 'Source Code Pro';
+}
+
 .container {
   width: 100%;
   max-width: 38rem;
@@ -205,7 +209,7 @@ h6 {
   margin: 3rem 0 0;
   font-size: .8125rem;
 
-  [itemprop="sameAs"] + [itemprop="sameAs"] {
+  [itemprop="sameAs"]+[itemprop="sameAs"] {
     margin-left: .4rem;
   }
 
@@ -237,7 +241,7 @@ h6 {
       flex: 0 0 5rem;
     }
 
-    + a {
+    +a {
       margin-left: 1rem;
 
       @media screen and (min-width: $break-small) {

@@ -1,5 +1,8 @@
 $serif: 'Alegreya';
 @import '1800.scss';
+@import 'syntax.scss';
+
+$codecolor: rgb(177, 0, 35);
 
 h1, h2, h3, h4, h5, h6 {
   text-align: center;
@@ -30,6 +33,15 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.5rem;
 }
 
+.godbolt {
+  font-family: 'Essays1743';
+  color: $codecolor;
+  border-bottom: 0;
+  font-size: 1.3rem;
+  float: right;
+  margin: 0 1rem;
+}
+
 article>h2::before {
   display: block;
   text-align: center;
@@ -56,11 +68,11 @@ pre {
 }
 
 p>code {
-  color: rgb(177, 0, 35);
+  color: $codecolor;
 }
 
 li>code {
-  color: rgb(177, 0, 35);
+  color: $codecolor;
 }
 
 @import 'collapse.scss'

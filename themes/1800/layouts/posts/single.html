@@ -3,9 +3,9 @@
   <time class="post-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "02 Jan 2006" }}</time>
   <article class="post">
     <header class="post-header">
-      <h1 class="post-title">{{ .Title }}</h1>
+      <h1 class="post-title">{{- .Title | safeHTML -}}</h1>
       {{ if isset .Params "subtitle" }}
-      <h2 class="post-subtitle">{{ .Params.subtitle }}</h2>
+      <h2 class="post-subtitle">{{- .Params.subtitle | safeHTML -}}</h2>
       {{ end }}
       <div class = "fleuron"></div>
     </header>
