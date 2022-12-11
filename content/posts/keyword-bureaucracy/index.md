@@ -49,7 +49,7 @@ aren't unimportant or unworthy, they address problems facing the American
 people where truly, "their oughta be a law".
 
 {{<
-  img src="bills" resize="500x jpg q75" imgstyle="mix-blend-mode: multiply;"
+  img src="bills" resize="500x jpg q75"
   style="width:30%; float: right; margin: 1rem 0 0 0.5rem; box-shadow: 0 0 0 0.29em #303030;"
 />}}
 
@@ -85,7 +85,7 @@ democratically elected individuals, but none of the people writing the
 rules and regulations were themselves elected.
 
 {{<
-  img src="rules" imgstyle="mix-blend-mode: multiply;"
+  img src="rules"
   style="width:35%; float: left; margin: 0 0.5rem 0 0;"
   figstyle="padding:0; font-size: 0.8rem; text-align: left"
 >}}

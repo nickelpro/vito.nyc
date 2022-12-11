@@ -1,6 +1,11 @@
 {{ partial "top.html" . }}
-
-  <time class="post-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+  <header class="page-header">
+    <nav class="site-nav">
+      <a href="{{ .Site.BaseURL }}">Index</a>
+    </nav>
+    <svg class="light-toggle" onclick="darkToggle()" viewBox="0 0 200 200"> {{ (resources.Get "svg/sun.svg" | minify).Content | safeHTML }} </svg>
+    <time class="post-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+  </header>
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">{{- .Title | safeHTML -}}</h1>

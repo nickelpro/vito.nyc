@@ -1,0 +1,25 @@
+@import "1800.scss";
+
+.dark-mode {
+  background-color: #282c34;
+  color: $gold;
+}
+
+.dark-mode .light-toggle {
+  stroke: $gold;
+}
+
+.sub-header {
+  display: flex;
+}
+
+.light-toggle {
+  height: 1.6rem;
+  width: auto;
+  margin-left: auto;
+  margin-right: 1rem;
+  cursor: pointer;
+
+  stroke: $black;
+  stroke-width: 7;
+}

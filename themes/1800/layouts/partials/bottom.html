@@ -39,5 +39,6 @@
         <!-- {{ hugo.BuildDate }} -->
       </footer>
     </div>
+    <script>{{ (resources.Get "js/darkmode.js" | minify).Content | safeJS }}</script>
   </body>
 </html>

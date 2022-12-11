@@ -12,7 +12,7 @@ by the standard library, but one where you feel compelled to add some useful
 options. After a brief and uninspiring survery of the field you settle on the
 old standard for implementing program settings, you're going to parse `argv`.
 
-{{< img src="beelzebub" imgstyle="border-radius:5em; mix-blend-mode: multiply;" />}}
+{{< img src="beelzebub" darkmode="light" imgstyle="border-radius:5em;" />}}
 
 Parsing command line options falls into the nightmare zone of complexity. It is
 not so trivial that there's a single obvious approach, nor is it difficult
@@ -126,7 +126,7 @@ const unordered_map<string, NoArgHandle> NoArgs {
 ```
 {{< /collapse >}}
 
-{{< img src="curse" imgstyle="mix-blend-mode: multiply; border-radius:50%;" style="shape-outside: circle(); width:30%; float: right; margin: 0.5rem;" />}}
+{{< img src="curse" darkmode="light" imgstyle="border-radius:50%;" style="width:30%; float: right; margin: 0 0 1rem;" />}}
 
 Of course, there are legitimate schools of thought which teach that the C
 preprocessor is of the devil. My immortal soul is worth little and less to me

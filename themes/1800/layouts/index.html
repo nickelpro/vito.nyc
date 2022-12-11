@@ -1,5 +1,13 @@
 {{ partial "top.html" . }}
 
+  <header class="site-header">
+    <h1><a href="{{ .Site.Params.homeURL }}">{{ .Site.Title }}</a></h1>
+    <span class="sub-header">
+      <p>{{ .Site.Params.tagline }}</p>
+      <svg class="light-toggle" onclick="darkToggle()" viewBox="0 0 200 200"> {{ (resources.Get "svg/sun.svg" | minify).Content | safeHTML }} </svg>
+    </span>
+  </header>
+
   <article class="posts">
 
     {{ range (where site.RegularPages "Type" "=" "posts").GroupByDate "2006" -}}

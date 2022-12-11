@@ -1,10 +1,20 @@
 $black: #303030;
 $gray: #686868;
-$dark-gray: #4d4d4d !default;
+$dark-gray: #4d4d4d;
 $light-gray: #e5e5e5;
 $white: #fbfbfb;
+
+$gold: #ac870f;
+$light-gold: #a38e48;
+
+$background: $white !default;
+$text: $black !default;
+$break-border: $gray !default;
+$quote-text: $gray !default;
+$quote-border: $light-gray !default;
+$link-hover: $gray !default;
+
 $serif: 'Arvo' !default;
-$monospace: '"Source Code Pro"';
 $fs: 1rem;
 $fs-large: 1.125rem;
 $std-margin: 0 0 1rem;
@@ -17,9 +27,9 @@ $break-small: 800px;
 }
 
 html {
-  background-color: $white;
+  background-color: $background;
 
-  color: $black;
+  color: $text;
 
   font-family: $serif, serif;
   font-size: $fs;
@@ -31,6 +41,7 @@ html {
 
 body {
   line-height: 1.6;
+  min-height: 100vh;
 }
 
 html,
@@ -54,7 +65,7 @@ hr {
   margin: 2rem 0;
 
   border: 0;
-  border-top: 1px solid $gray;
+  border-top: 1px solid $break-border;
 
 }
 
@@ -73,10 +84,15 @@ img {
   max-width: 100%;
 }
 
+.dark-mode blockquote {
+  border-left: 5px solid #353535;
+  color: #a38c31;
+}
+
 blockquote {
   padding: 1rem;
-  border-left: 5px solid $light-gray;
-  color: $gray;
+  border-left: 5px solid $quote-border;
+  color: $quote-text;
   font-style: italic;
 
   p {
@@ -98,20 +114,29 @@ a {
 
   &:hover {
     border-bottom-color: currentColor;
-    color: $gray;
+    color: $link-hover;
   }
 }
 
 ol,
 ul {
   margin: 0 0 1rem 1.25rem;
-  padding: 0;
+
+  @media screen and (max-width: $break-small) {
+    padding: 0;
+  }
+
   list-style-position: outside;
 
   ol,
   ul {
     margin-bottom: 0;
   }
+}
+
+
+.footnotes>:is(ol, ul) {
+  padding: 0;
 }
 
 li {
@@ -193,16 +218,6 @@ code {
   h1 {
     margin-bottom: .5rem;
   }
-}
-
-.site-nav {
-  margin-bottom: 1.5rem;
-  display: inline-block;
-}
-
-.site-nav a::before {
-  content: '\2190'; // left arrow
-  margin-right: .25rem;
 }
 
 .site-footer {

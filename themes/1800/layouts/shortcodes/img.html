@@ -3,7 +3,13 @@
   {{ $img = $img.Resize (.Get "resize") }}
 {{ end }}
 <figure style="text-align: center; position: relative; {{ .Get "style" | safeCSS }}">
-  <img style="display: block; {{ .Get "imgstyle" | safeCSS }}" src="{{ $img.RelPermalink }}" alt="{{ .Get "alt" }}">
+  <img
+    {{ if (.Get "darkmode") }}
+      class="dark-{{ .Get "darkmode" | safeCSS }}"
+    {{ end }}
+    style="display: block; {{ .Get "imgstyle" | safeCSS }}"
+    src="{{ $img.RelPermalink }}" alt="{{ .Get "alt" }}"
+  >
   {{if or (len .Inner) (.Get "caption")}}
 	<figcaption style="{{ .Get "figstyle" | safeCSS }}">
     {{ if eq (len .Inner) 0}}

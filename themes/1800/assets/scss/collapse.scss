@@ -1,6 +1,7 @@
 $black: #303030 !default;
 $dark-gray: #4d4d4d !default;
 $gray: #686868 !default;
+$medium-gray: #b9b9b9 !default;
 $light-gray: #e5e5e5 !default;
 
 .collapse-button {
@@ -28,11 +29,19 @@ $light-gray: #e5e5e5 !default;
   margin: 0.1rem 0;
 }
 
+.dark-mode .button-ornament::before {
+  color: $light-gold;
+}
+
 .button-ornament::before {
   color: $dark-gray;
   font-size: 1.75rem;
   font-family: Symbola;
   content: "\1F65C";
+}
+
+.dark-mode .button-label {
+  color: $gold;
 }
 
 .button-label {
@@ -59,6 +68,10 @@ $light-gray: #e5e5e5 !default;
   justify-content: center;
 }
 
+.dark-mode .collapse-right::after {
+  color: $light-gold;
+}
+
 .collapse-right::after {
   font-family: Symbola;
   content: "\2BAF";
@@ -68,6 +81,10 @@ $light-gray: #e5e5e5 !default;
   color: $dark-gray;
 }
 
+.dark-mode .collapse-close::after {
+  color: $light-gold;
+}
+
 .collapse-close::after {
   font-family: Essays1743;
   content: "X";
@@ -75,6 +92,10 @@ $light-gray: #e5e5e5 !default;
   color: $dark-gray;
   margin: 0.2rem 0 0.8rem;
   display: inline-block;
+}
+
+.dark-mode .collapse-center span::after {
+  background: $light-gold;
 }
 
 .collapse-center span::after {
@@ -93,11 +114,15 @@ $light-gray: #e5e5e5 !default;
   width: 100%;
 }
 
+.dark-mode .collapsible {
+  border: 0.1em solid #4e4a3b;
+}
+
 .collapsible {
   width: 100%;
   text-align: center;
   border-radius: 1rem;
-  border: 0.1em solid $light-gray;
+  border: 0.1em solid $medium-gray;
   overflow: hidden;
 }
 

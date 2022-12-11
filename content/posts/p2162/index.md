@@ -17,7 +17,7 @@ sums up the vibe:
 > Visitor pattern has the most narrow use and almost never will the added complexity be justified
 
 {{< collapse >}}
-My brother's asessment of the visitor pattern was even less generous:
+My brother's assessment of the visitor pattern was even less generous:
 
 > btw when you get a chance
 >
@@ -39,12 +39,12 @@ The pattern was canonized in C++ with `std::variant` and `std::visit`
 in C++17. The reception was less than warm; in an influential post Mark Kline
 convincingly argued that, ["`std::visit` is everything wrong with C++"](https://bitbashing.io/std-visit.html).
 
-{{< img src="rat-header" resize="700x webp q90" imgstyle="border-radius:5em; mix-blend-mode: multiply;" />}}
+{{< img src="rat-header" resize="700x webp q90" darkmode="diff" imgstyle="border-radius:5em;" />}}
 
 I'm partial to this argument. Plainly, we want pattern matching syntax, we want
 it now, and the longer it is delayed the more horrendous crust builds up in the
 gutters. Yet, pattern matching isn't here and the crumbs down in the gutter look
-mighty tastey. Perhaps a little nibble wouldn't be so bad...
+mighty tasty. Perhaps a little nibble wouldn't be so bad...
 
 In this post we'll discuss how to use `std::variant` and `std::visit` as
 replacements for polymorphic inheritance, allowing the use of value semantics
@@ -94,7 +94,7 @@ void print_name(Person& p) {
 ```
 {{< /collapse >}}
 
-{{< img src="duck" resize="210x webp q90" imgstyle="mix-blend-mode: multiply; border-radius:50%;" style="shape-outside: circle(); width:30%; float: left; margin: 0.5rem;" />}}
+{{< img src="duck" resize="210x webp q90" darkmode="diff" imgstyle="border-radius:50%;" style="shape-outside: circle(); width:30%; float: left; margin: 0.5rem;" />}}
 
 We don't care if the type we're dealing with is specifically `Alice` or `Bob`, we
 only care that the type is vaguely person-shaped, that it's got a `name()`.
@@ -244,7 +244,7 @@ Yuck.
 By modern C++ standards this is _OK_, but we've abandoned value semantics for
 the notational soup of smart pointers. P2162 provides an alternative approach.
 
-{{< img src="tree-header" resize="700x webp q90" imgstyle="mix-blend-mode: multiply;" />}}
+{{< img src="tree-header" resize="700x webp q90" darkmode="filter"/>}}
 
 **Figure 5** lays out our packets as individual classes with no base class to
 derive from. The code is included here for completeness, but there's nothing
@@ -357,7 +357,7 @@ implicitly by `std::variant` and won't become a source of bugs.
 
 ## Performance Gremlins
 
-{{< img src="jester.webp" resize="210x webp q90" imgstyle="mix-blend-mode: multiply; border-bottom-left-radius:50%; border-bottom-right-radius:50%" style="shape-outside: circle(); width:30%; float: right; margin: 0.5rem;" />}}
+{{< img src="jester.webp" resize="210x webp q90" darkmode="filter" imgstyle="border-bottom-left-radius:50%; border-bottom-right-radius:50%" style="shape-outside: circle(); width:30%; float: right; margin: 0.5rem;" />}}
 
 Before you go and turn your entire codebase upside down you should be aware that
 GCC [has two](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=86912)

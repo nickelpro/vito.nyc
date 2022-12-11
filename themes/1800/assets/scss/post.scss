@@ -1,13 +1,69 @@
 $serif: 'Alegreya';
 @import '1800.scss';
 @import 'syntax.scss';
+@import 'dark-syntax.scss';
 
-$codecolor: rgb(177, 0, 35);
+$monospace: 'Source Code Pro';
+$code-red: rgb(177, 0, 35);
+$code-dark: #c20a0a;
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-align: center;
   font-family: 'Essays1743';
   font-weight: normal;
+}
+
+.dark-mode {
+  background-color: #282c34;
+  color: $gold;
+}
+
+.dark-mode :is(p, a, li)>code {
+  color: $code-dark;
+  font-family: $monospace;
+}
+
+.dark-mode .dark-diff {
+  mix-blend-mode: difference;
+}
+
+.dark-mode .dark-light {
+  mix-blend-mode: lighten;
+}
+
+.dark-mode .dark-filter {
+  filter: invert(1) sepia(1) saturate(400%) brightness(55%) hue-rotate(-3deg);
+  mix-blend-mode: lighten;
+}
+
+.page-header {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+
+.site-nav a::before {
+  content: '\2190'; // left arrow
+  margin-right: .25rem;
+}
+
+.dark-mode .light-toggle {
+  stroke: $gold;
+}
+
+.light-toggle {
+  height: 1.6rem;
+  width: auto;
+  margin-left: auto;
+  margin-right: 1rem;
+  cursor: pointer;
+
+  stroke: $black;
+  stroke-width: 7;
 }
 
 .post-title {
@@ -33,9 +89,13 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.5rem;
 }
 
+.dark-mode .godbolt {
+  color: $code-dark;
+}
+
 .godbolt {
   font-family: 'Essays1743';
-  color: $codecolor;
+  color: $code-red;
   border-bottom: 0;
   font-size: 1.3rem;
   float: right;
@@ -51,12 +111,25 @@ article>h2::before {
   content: "\2767";
 }
 
+.dark-mode article>p:first-of-type::first-letter {
+  color: #8d762c;
+}
+
 article>p:first-of-type::first-letter {
   font-family: 'Alphabet of Children';
   font-size: 8.2rem;
   float: left;
   margin-right: 0.25rem;
   line-height: 0.75;
+}
+
+.footnote-ref {
+  border-bottom: none;
+  color: $code-red;
+}
+
+.dark-mode figcaption {
+  color: #9b8a59;
 }
 
 figcaption {
@@ -67,12 +140,9 @@ pre {
   border-radius: 1rem;
 }
 
-p>code {
-  color: $codecolor;
+:is(p, a, li)>code {
+  color: $code-red;
+  font-family: $monospace;
 }
 
-li>code {
-  color: $codecolor;
-}
-
-@import 'collapse.scss'
+@import 'collapse.scss';
