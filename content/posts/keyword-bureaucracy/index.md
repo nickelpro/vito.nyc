@@ -5,15 +5,13 @@ title: "Keyword: Bureaucracy"
 subtitle: "The Limits, or Lack Thereof, of Bureaucratic Powers"
 date: 2021-04-21T20:39:29-04:00
 draft: false
+epigraph: "This post is was written rather hastily as a college essay writing
+assignment and is not reflective of anything other than the imminent deadline."
 ---
 
 > The bureaucracy is expanding to meet the needs of the expanding bureaucracy.
 >
 > — Oscar Wilde
-
-_This post is was written rather hastily as a college essay writing assignment
-and not reflective of anything other than the imminent deadline. This note was
-added after is was graded._ 🙂
 
 Bureaucracy in the mind of the average American is typically a _prescriptive_
 arm of government. It is the clerk at the DMV, demanding yet one more proof of

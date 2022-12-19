@@ -7,6 +7,18 @@ $monospace: 'Source Code Pro';
 $code-red: rgb(177, 0, 35);
 $code-dark: #c20a0a;
 
+.dark-mode .epigraph {
+  color: #a38c31;
+}
+
+.epigraph {
+  color: $quote-text;
+  width: 80%;
+  margin: auto;
+  font-style: italic;
+  text-align: center;
+}
+
 h1,
 h2,
 h3,

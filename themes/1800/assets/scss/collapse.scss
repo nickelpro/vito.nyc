@@ -137,3 +137,9 @@ $light-gray: #e5e5e5 !default;
   font-size: 0.9rem;
   margin: 0 1rem;
 }
+
+.collapse-inner .highlight {
+  @media screen and (max-width: $break-small) {
+    overflow-wrap: anywhere;
+  }
+}

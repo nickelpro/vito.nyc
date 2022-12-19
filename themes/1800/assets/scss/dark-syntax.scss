@@ -5,6 +5,7 @@ $numberliteral: #7cc1fa;
 $classname: #ff5376;
 $comment: #b9832b;
 $code-gold: #a89042;
+$tag: #7e8b9e;
 
 /* Background */
 .dark-mode .bg {}
@@ -123,7 +124,7 @@ $code-gold: #a89042;
 
 /* NameBuiltin */
 .dark-mode .chroma .nb {
-  color: #204a87
+  color: $tag;
 }
 
 /* NameBuiltinPseudo */
@@ -190,7 +191,8 @@ $code-gold: #a89042;
 
 /* NameTag */
 .dark-mode .chroma .nt {
-  color: #204a87;
+  color: $tag;
+  ;
   font-weight: bold
 }
 
@@ -350,7 +352,8 @@ $code-gold: #a89042;
 
 /* OperatorWord */
 .dark-mode .chroma .ow {
-  color: #204a87;
+  color: $tag;
+  ;
   font-weight: bold
 }
 

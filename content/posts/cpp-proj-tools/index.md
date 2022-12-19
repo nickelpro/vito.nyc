@@ -33,7 +33,7 @@ consumes a format specification and applies those formatting rules to source
 code files.
 
 {{<
-  img src="crusader" imgstyle="border-radius:5rem;" darkmode="diff"
+  img src="crusader" imgstyle="border-radius:5rem;" darkmode="filter"
   style="width:30%; float: left; margin: 0 0.3rem 0 0; shape-outside: inset(0 0 0 0 round 5rem);"
 />}}
 
@@ -94,7 +94,7 @@ consensus trumps a beautifully fractured ecosystem.
 [^3]: `Gradle` is primarily a Java build system, and not well loved in that
 ecosystem either. `Ninja` is a target for meta-build systems like `CMake` and
 not intended to be produced by humans. `Xcode` is of course Apple's native IDE,
-and its non-portability makes it a non-starter. `Qmake` was Qt's build system,
+and its non-portability makes it a non-starter. `QMake` was Qt's build system,
 and Qt itself [has migrated](https://www.qt.io/blog/qt-and-cmake-the-past-the-present-and-the-future)
 to `CMake`.
 

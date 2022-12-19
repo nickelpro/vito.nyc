@@ -13,8 +13,8 @@
       <h2 class="post-subtitle">{{- .Params.subtitle | safeHTML -}}</h2>
       {{ end }}
       <div class = "fleuron"></div>
+      <p class="epigraph">{{- .Params.epigraph | safeHTML -}}</p>
     </header>
-
     {{ .Content }}
 
   </article>
