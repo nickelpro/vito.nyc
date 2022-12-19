@@ -4,6 +4,7 @@ subtitle: "or: A Candle in the Dark"
 date: 2022-12-19T17:00:00-04:00
 image: "social-media"
 draft: false
+description: "A conversational guide to modern CMake packaging for C++"
 epigraph: "Pretty sure I just failed my Calc III final.<br>I hate calculus, but
 I love CMake. Let's talk about CMake."
 ---
@@ -28,6 +29,16 @@ imgstyle="border-top-left-radius:50%; border-top-right-radius:50%" />}}
 Absent an official cookbook, widespread community consensus, a qualified expert,
 or well-liked town fool to provide guidance; I provide my dim, flickering
 advice for how to best take advantage of the `CMake` packaging facilities.
+
+{{< collapse >}}
+Don't like reading? _Don't like me?_
+
+Got you covered, [example repo is here](https://github.com/nickelpro/NavidsonExample)
+
+Usage demonstration of that repo [is here](https://github.com/nickelpro/AshTreeExample)
+
+Happy packaging!
+{{< /collapse >}}
 
 ## Package? Never heard of her.
 
@@ -202,7 +213,7 @@ exec_prefix=${prefix}
 includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
 libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
 
-Name: @PROJECT_NAME@
+Name: navidson
 Description: My dear Zampanò, who did you lose?
 Version: @PROJECT_VERSION@
 Libs: -L${libdir} -lhouse
@@ -241,8 +252,8 @@ install(
 
 We're now ready for the meat, the `install(TARGETS)` and `install(EXPORT)`
 directives. These, like `pkg-config`, are complex commands with many different
-nobs and buttons. While we'll explore a reasonable usage, the important take
-away is that you should be _using_ `install(EXPORT)` instead of older styles
+knobs and buttons. While we'll explore a reasonable usage, the important take
+away is that you _should be using_ `install(EXPORT)` instead of older styles
 of installing and exporting targets.
 
 {{< collapse >}}
@@ -334,10 +345,11 @@ install(FILES
 ```
 {{< /collapse >}}
 
-If our library had any dependencies we would add the code to find them here.
-In this example we don't, so **navidson-config.cmake** is a single line of code,
-which includes the generated export file. The only thing left to do is make sure
-it gets installed alongside the version file and we're done.
+If our library had any dependencies we would add the code to find them here (as
+well as in our _CMakeLists.txt_ file). In this example we don't, so
+**navidson-config.cmake** is a single line of code, which includes the generated
+export file. The only thing left to do is make sure it gets installed alongside
+the version file and we're done.
 
 Effectively zero projects I've look at do this in the "modern" way so I'd like
 to briefly address silly things you shouldn't be doing in the config file:
@@ -363,12 +375,12 @@ by `find_package(REQUIRED)`.
 name of your entire package? How hard is find+replace? I never say this, but
 **YAGNI**.
 
-There are very few reasons for your project config file to be anything other
-than `find_package()` and `include()` directives. While there are some reasons
-to split out targets into separate exports (for example, if you have optional
-dependencies that enable/disbale certain targets), most projects will get away
-with a set of zero or more calls to `find_package()` followed by a single
-`include()` of their export file.
+There are very few reasons for your project config file to consist of anything
+other than `find_package()` and `include()` directives. While there are some
+reasons to split out targets into separate exports (for example, if you have
+optional dependencies that enable/disbale certain targets), most projects will
+get away with a set of zero or more calls to `find_package()` followed by a
+single `include()` of their export file.
 
 ## Afterword
 

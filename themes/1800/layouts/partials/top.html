@@ -30,12 +30,14 @@
     <meta property="og:type" content="article">
     <meta property="og:description" content="{{ .Description }}">
     <meta name="description" content="{{ .Description }}">
+    <meta name="twitter:description" content="{{ .Description }}">
     {{ if (.Params.Get "Image")}}
       {{ $img := .Page.Resources.GetMatch (printf "*%s*" (.Params.Get "Image"))  }}
       <meta property="og:image" content="{{ $img.Permalink }}">
       <meta property="og:image:url" content="{{ $img.Permalink }}">
       <meta property="og:image:width" content="{{ $img.Width }}">
       <meta property="og:image:height" content="{{ $img.Height }}">
+      <meta name="twitter:card" content="summary_large_image">
     {{ end }}
     {{ $main_style := resources.Get "scss/post.scss" | toCSS (dict "outputStyle" "compressed") | fingerprint }}
     <link rel="stylesheet" href="{{ $main_style.Permalink }}">
