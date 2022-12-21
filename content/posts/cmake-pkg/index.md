@@ -316,7 +316,10 @@ directly into the install tree with the name "\[exportName\].cmake", so in this 
 "navidsonTargets.cmake". This file does all the necessary legwork to
 setup our targets in the parent project. In the parent project our targets
 will have their names prefixed by the `NAMESPACE`, so `house` will be known as
-`nvr::house`.
+`nvr::house`.[^4]
+
+[^4]: Convention is to use the package name as the namespace, so a good citizen
+would use `navidson::house`. [See this discussion on Reddit](https://www.reddit.com/r/cpp/comments/zq5er9/modern_cmake_packaging_a_guide/j0wnqj2/?context=2)
 
 ## The End
 
