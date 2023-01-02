@@ -381,7 +381,7 @@ name of your entire package? How hard is find+replace? I never say this, but
 There are very few reasons for your project config file to consist of anything
 other than `find_package()` and `include()` directives. While there are some
 reasons to split out targets into separate exports (for example, if you have
-optional dependencies that enable/disbale certain targets), most projects will
+optional dependencies that enable/disable certain targets), most projects will
 get away with a set of zero or more calls to `find_package()` followed by a
 single `include()` of their export file.
 
