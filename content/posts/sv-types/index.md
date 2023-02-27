@@ -382,12 +382,12 @@ module Mod(
   logic delta,
 
   // input var bit, bits cannot be nets, so var is implicit
-  input bit eta,
+  input bit epsilon,
 
   // output wire logic, wire and logic are implicit
-  output epsilon,
+  output zeta,
   // output var logic, output is inherited, var is implicit
-  logic zeta,
+  logic eta,
 );
   // ...
 endmodule
