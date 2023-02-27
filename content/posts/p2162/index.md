@@ -1,5 +1,6 @@
 ---
-title: "Upside Down Polymorphic&nbspInheritance"
+title: "Upside Down Polymorphic Inheritance"
+display: "Upside Down Polymorphic&nbspInheritance"
 subtitle: "Leveraging P2162 for&nbspFun&nbsp&&nbspProfit"
 description: "Discussion and examples of using P2162 to build polymorphic types in C++"
 image: "social-media"

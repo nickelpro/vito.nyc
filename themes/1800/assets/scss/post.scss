@@ -19,6 +19,18 @@ $code-dark: #c20a0a;
   text-align: center;
 }
 
+.dark-mode .epigraph-author {
+  color: #a38c31;
+}
+
+.epigraph-author {
+  color: $quote-text;
+  width: 80%;
+  margin: auto;
+  font-style: italic;
+  text-align: right;
+}
+
 h1,
 h2,
 h3,
@@ -49,7 +61,7 @@ h6 {
 }
 
 .dark-mode .dark-filter {
-  filter: invert(1) sepia(1) saturate(400%) brightness(55%) hue-rotate(-3deg);
+  filter: invert(1) sepia(1) saturate(2000%) brightness(50%) hue-rotate(-6deg);
   mix-blend-mode: lighten;
 }
 

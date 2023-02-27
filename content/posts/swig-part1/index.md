@@ -206,7 +206,7 @@ the preprocessor places a copy of the include'd file into the unit. Here
 we're including standard SWIG [typemaps](http://www.swig.org/Doc4.0/Typemaps.html)
 for interacting C++ strings and the standard integer types.
 
-{{<  img src="cog" resize="500x webp q75" darkmode="filter" style="width:30%; float: right; margin: 0 0 0 0.2rem;"/>}}
+{{<  img src="cog.png" resize="500x webp q75" darkmode="filter" style="width:30%; float: right; margin: 0 0 0 0.2rem;"/>}}
 
 This raises the awkward question of "What is a typemap?" For now, I'm going to
 quote SWIG's documentation:

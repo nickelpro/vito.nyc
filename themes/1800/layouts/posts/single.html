@@ -8,12 +8,21 @@
   </header>
   <article class="post">
     <header class="post-header">
+      {{ if isset .Params "display"}}
+      <h1 class="post-title">{{- .Params.display | safeHTML -}}</h1>
+      {{ else }}
       <h1 class="post-title">{{- .Title | safeHTML -}}</h1>
+      {{ end }}
       {{ if isset .Params "subtitle" }}
       <h2 class="post-subtitle">{{- .Params.subtitle | safeHTML -}}</h2>
       {{ end }}
       <div class = "fleuron"></div>
+      {{ if isset .Params "epigraph" }}
       <p class="epigraph">{{- .Params.epigraph | safeHTML -}}</p>
+      {{ if isset .Params "epigraphauthor" }}
+      <p class="epigraph-author">— {{ .Params.epigraphAuthor | safeHTML -}}</p>
+      {{ end }}
+      {{ end }}
     </header>
     {{ .Content }}
 

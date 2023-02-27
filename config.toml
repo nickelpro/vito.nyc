@@ -1,10 +1,10 @@
-baseURL = "https://blog.nickelp.ro"
+baseURL = "https://blog.vito.nyc"
 languageCode = "en-us"
-title = "nickelp.ro"
+title = "vito.nyc"
 theme = "1800"
 
 [params]
-  homeURL = "https://nickelp.ro"
+  homeURL = "https://vito.nyc"
   description = "Personal Site"
   githubUsername = "nickelpro"
   twitterUsername = "VitoGamberini"

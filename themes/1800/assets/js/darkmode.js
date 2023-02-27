@@ -8,6 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
   document.body.style.visibility = 'visible';
   document.body.style.opacity = 1;
   window.requestAnimationFrame(() => {
-    document.body.style.transition = 'all 1s';
+    document.body.style.transition = 'color 1s';
+    document.body.style.transition = 'background-color 1s'
   });
 });
