@@ -1,14 +1,27 @@
-{{ $img := .Page.Resources.GetMatch (printf "*%s*" (.Get "src"))}}
-{{if (.Get "resize")}}
-  {{ $img = $img.Resize (.Get "resize") }}
+{{ $lightsrc := .Page.Resources.GetMatch (printf "*%s*" (.Get "src"))}}
+{{ $darksrc := .Page.Resources.GetMatch (printf "*%s*" (.Get "darksrc"))}}
+
+{{ if (.Get "resize") }}
+  {{ $lightsrc = $lightsrc.Resize (.Get "resize") }}
 {{ end }}
+
+{{ if (.Get "darksrc")}}
+  {{ if (.Get "resize") }}
+    {{ $darksrc = $darksrc.Resize (.Get "resize") }}
+  {{ end }}
+{{ end }}
+
 <figure style="text-align: center; position: relative; {{ .Get "style" | safeCSS }}">
   <img
     {{ if (.Get "darkmode") }}
       class="dark-{{ .Get "darkmode" | safeCSS }}"
     {{ end }}
+    {{ if (.Get "darksrc") }}
+      data-lightsrc="{{ $lightsrc.RelPermalink }}"
+      data-darksrc="{{ $darksrc.RelPermalink }}"
+    {{ end }}
     style="display: block; {{ .Get "imgstyle" | safeCSS }}"
-    src="{{ $img.RelPermalink }}" alt="{{ .Get "alt" }}"
+    src="{{ $lightsrc.RelPermalink }}" alt="{{ .Get "alt" }}"
   >
   {{if or (len .Inner) (.Get "caption")}}
 	<figcaption style="{{ .Get "figstyle" | safeCSS }}">

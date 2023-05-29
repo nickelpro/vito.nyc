@@ -1,6 +1,7 @@
 ---
-title: "Modern CMake Packaging: A&nbspGuide"
-subtitle: "or: A Candle in the Dark"
+title: "Modern CMake Packaging: A Guide"
+display: "Modern CMake Packaging: A&nbspGuide"
+subtitle: "Or, A Candle in the Dark"
 date: 2022-12-19T17:00:00-04:00
 image: "social-media"
 draft: false
