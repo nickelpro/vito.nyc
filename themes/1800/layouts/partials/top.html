@@ -31,8 +31,8 @@
     <meta property="og:description" content="{{ .Description }}">
     <meta name="description" content="{{ .Description }}">
     <meta name="twitter:description" content="{{ .Description }}">
-    {{ if (.Params.Get "Image")}}
-      {{ $img := .Page.Resources.GetMatch (printf "*%s*" (.Params.Get "Image"))  }}
+    {{ if (index .Params "Image")}}
+      {{ $img := .Page.Resources.GetMatch (printf "*%s*" (index .Params "Image"))  }}
       <meta property="og:image" content="{{ $img.Permalink }}">
       <meta property="og:image:url" content="{{ $img.Permalink }}">
       <meta property="og:image:width" content="{{ $img.Width }}">

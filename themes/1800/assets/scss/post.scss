@@ -115,6 +115,10 @@ h6 {
 
 .dark-mode .godbolt {
   color: $code-dark;
+
+  &:hover {
+    color: $link-hover;
+  }
 }
 
 .godbolt {

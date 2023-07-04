@@ -1,7 +1,7 @@
 ---
 title: "C++ Project Tooling"
 subtitle: "An Opinionated Guide"
-date: 2022-03-24T01:30:00-04:00
+date: 2023-07-03T13:00:00-04:00
 image: "social-media"
 draft: true
 ---
@@ -19,12 +19,16 @@ that I cast my own implacable judgement.
 
 Here is how we should be setting up new C/C++ projects in the 2020s.
 
-{{< img src="storm" darkmode="diff" imgstyle="border-radius:5em;" />}}
+{{<
+  img src="storm.webp" darksrc="storm-inverted.webp"
+  darkmode="filter" imgstyle="border-radius: 12% / 40%;"
+  resize="x684 q90"
+/>}}
 
 [^1]: Please forgive the "/", C and C++ are different programming languages,
 but in this they are exactly alike.
 
-## clang-format: Ultima Ratio Formationis
+## clang-format: Ultima Ratio Formationum
 
 The first file in a new C++ project should be `.clang-format`.[^2]
 
@@ -33,8 +37,9 @@ consumes a format specification and applies those formatting rules to source
 code files.
 
 {{<
-  img src="crusader" imgstyle="border-radius:5rem;" darkmode="filter"
-  style="width:30%; float: left; margin: 0 0.3rem 0 0; shape-outside: inset(0 0 0 0 round 5rem);"
+  img src="crusader.webp" darksrc="crusader-inverted.webp"
+  imgstyle="border-radius:50% / 30%;" darkmode="filter"
+  style="width:30%; float: left; margin: 0 0.3rem 0 0; shape-outside: inset(0 0 0 0 round 50% / 30%);"
 />}}
 
 In every religious crusade launched on forums, subreddits, and mailing lists
@@ -70,7 +75,7 @@ occupies the same place in the stack as other modern build systems. The
 important part is this, `CMake` has won the war.
 
 {{< img src="cmake" darkmode="diff">}}
-Source: [Jet Brains 2021 DevEco Survery](https://www.jetbrains.com/lp/devecosystem-2021/cpp/)
+Source: [Jet Brains 2022 DevEco Survery](https://www.jetbrains.com/lp/devecosystem-2022/cpp/)
 {{</ img >}}
 
 The `Makefile` and `Visual Studio project` numbers are irrelevant, they belong
@@ -117,15 +122,14 @@ and dependencies. For example:
   "name": "strugatsky",
   "version": "1.2.6",
   "description": "Happiness for everybody, free, and let no one go unsatisfied",
-  "homepage": "https://nickelp.ro/posts/cpp-proj-layout/",
+  "homepage": "https://vito.nyc/posts/cpp-proj-layout/",
   "maintainers": [
     "Vito Gamberini <vito@gamberini.email>"
   ],
   "supports": "!uwp",
   "license": "Zlib",
   "dependencies": [
-    "fmt",
-    "ztd-text"
+    "fmt"
   ]
 }
 ```
@@ -139,26 +143,43 @@ fellow developers. My recommended usage is as follows:
 {{< collapse label="CMakeLists.txt">}}
 ```CMake
 cmake_minimum_required(VERSION 3.22)
-set(CMAKE_TOOLCHAIN_FILE
-${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake
-  CACHE STRING "Vcpkg toolchain file"
+
+if(NOT DEFINED CMAKE_TOOLCHAIN_FILE)
+  include(FetchContent)
+  FetchContent_Declare(
+    vcpkg
+    GIT_REPOSITORY https://github.com/microsoft/vcpkg.git
+    GIT_TAG master
+    GIT_SHALLOW TRUE
+  )
+  FetchContent_MakeAvailable(vcpkg)
+  set(CMAKE_TOOLCHAIN_FILE
+    ${vcpkg_SOURCE_DIR}/scripts/buildsystems/vcpkg.cmake
+    CACHE FILEPATH "Vcpkg toolchain file"
+  )
+  set(VCPKG_ROOT_DIR ${vcpkg_SOURCE_DIR} CACHE PATH "Vcpkg Root Directory")
+endif()
+
+add_custom_target(UpdateVcpkgBaseline
+  ${VCPKG_ROOT_DIR}/vcpkg x-update-baseline
 )
 
 project(strugatsky CPP)
 
-find_path(ztd_include ztd REQUIRED)
 find_package(fmt CONFIG REQUIRED)
 
 add_executable(strugatsky)
-target_include_directories(strugatsky PRIVATE ${ztd_include})
-target_link_libraries(strugatsky PRIVATE fmt::fmt)
+target_link_libraries(strugatsky PRIVATE fmt::fmt-header-only)
 ```
 {{< /collapse >}}
 
-This `CMakeLists.txt` has a built-in assumption that `vcpkg` is being used as a
-submodule. It also invokes `set()`, which `CMake` modernists will find
-repugnant to the senses. I share their aversion. For a greater exploration
-of these choices, see:
+An admission: this `CMakeLists.txt` performs dark and forbidden arts. The
+mechanism for fetching `vcpkg` shown above has been [declared verboten by the
+elders of Redmond](https://github.com/microsoft/vcpkg/pull/27311). I have shown
+these proscribed incantations to tempt you towards apostacy, do with that what
+you will.
+
+For readers who are not shackled by the orthodoxy, this is explored more in,
 [*Addendum: Integrating vcpkg*](/posts/cpp-tools-layout-addenda).
 
 ## Putting it all together
