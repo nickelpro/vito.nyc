@@ -1,0 +1,50 @@
+{{ $lightsrc := .Page.Resources.GetMatch (printf "*%s*" (.Get "src"))}}
+{{ $darksrc := .Page.Resources.GetMatch (printf "*%s*" (.Get "darksrc"))}}
+
+{{ if (.Get "resize") }}
+  {{ $lightsrc = $lightsrc.Resize (.Get "resize") }}
+{{ end }}
+
+{{ if (.Get "darksrc")}}
+  {{ if (.Get "resize") }}
+    {{ $darksrc = $darksrc.Resize (.Get "resize") }}
+  {{ end }}
+{{ end }}
+
+<aside class="collapsible">
+  <button role="presentation" onclick="collapseToggle(this)" class="collapse-button">
+    <span class="collapse-left"></span>
+    <span class="collapse-center">
+      <span class="{{ if (.Get "label") }}button-label{{ else}}button-ornament{{end}}">
+        {{ if (.Get "label") }}
+          {{ .Get "label" }}
+        {{ end }}
+      </span>
+    </span>
+    <span class="collapse-right"></span>
+  </button>
+  <div class="collapse-div">
+    <div class="collapse-inner">
+      <figure style="text-align: center; position: relative; {{ .Get "style" | safeCSS }}">
+        <img
+          {{ if (.Get "darkmode") }}
+            class="dark-{{ .Get "darkmode" | safeCSS }}"
+          {{ end }}
+          {{ if (.Get "darksrc") }}
+            data-lightsrc="{{ $lightsrc.RelPermalink }}"
+            data-darksrc="{{ $darksrc.RelPermalink }}"
+          {{ end }}
+          style="display: block; {{ .Get "imgstyle" | safeCSS }}"
+          src="{{ $lightsrc.RelPermalink }}" alt="{{ .Get "alt" }}"
+        >
+        {{if (.Get "caption")}}
+        <figcaption style="{{ .Get "figstyle" | safeCSS }}">
+          {{ .Get "caption" | markdownify }}
+        </figcaption>
+        {{ end }}
+      </figure>
+      {{ .Inner | markdownify }}
+      <button role="presentation" onclick="collapseClose(this)" class="collapse-close"></button>
+    </div>
+  </div>
+</aside>

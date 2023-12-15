@@ -67,6 +67,7 @@ h6 {
 
 .page-header {
   display: flex;
+
   margin-bottom: 1.5rem;
 }
 
@@ -81,13 +82,25 @@ h6 {
 
 .light-toggle {
   height: 1.6rem;
-  width: auto;
-  margin-left: auto;
   margin-right: 1rem;
   cursor: pointer;
 
   stroke: $black;
   stroke-width: 7;
+}
+
+.light-arrow {
+  margin-left: auto;
+}
+
+.light-arrow::before {
+  font-family: Symbola;
+  font-size: 1.2rem;
+  content: "\27a5";
+}
+
+.post-header {
+  margin-bottom: 2rem;
 }
 
 .post-title {

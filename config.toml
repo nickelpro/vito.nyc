@@ -4,23 +4,23 @@ title = "vito.nyc"
 theme = "1800"
 
 [params]
-  homeURL = "https://vito.nyc"
-  description = "Personal Site"
-  githubUsername = "nickelpro"
-  twitterUsername = "VitoGamberini"
-  redditUsername = "not_a_novel_account"
-  instagramUsername = "vito.gamberini"
-  tagline = "Taglines are for nerds"
+homeURL = "https://vito.nyc"
+description = "Personal Site"
+githubUsername = "nickelpro"
+twitterUsername = "VitoGamberini"
+redditUsername = "not_a_novel_account"
+instagramUsername = "vito.gamberini"
+tagline = "Taglines are for nerds"
 
 [params.work]
-  jobTitle = "Deep Sea Noodle"
+jobTitle = "Deep Sea Noodle"
 
-[author]
-  fullname = "Nicholas Vito Gamberini"
-  name = "Vito Gamberini"
+[params.author]
+fullname = "Nicholas Vito Gamberini"
+name = "Vito Gamberini"
 
 [markup.goldmark.renderer]
-  unsafe = true
+unsafe = true
 
 [markup.highlight]
-  noClasses = false
+noClasses = false

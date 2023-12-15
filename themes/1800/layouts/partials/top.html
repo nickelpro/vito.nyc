@@ -14,7 +14,7 @@
     {{ hugo.Generator }}
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="{{ .Site.Author.name }}">
+    <meta name="author" content="{{ .Site.Params.author.name }}">
     <meta property="og:url" content="{{ .Permalink }}">
 
     {{ if .IsHome -}}
@@ -26,13 +26,17 @@
     <link rel="stylesheet" href="{{ $main_style.Permalink }}">
     {{- else -}}
     <title>{{ .Title | htmlUnescape | safeHTML }} - {{ .Site.Title }}</title>
-    <meta property="og:title" content="{{ .Title | htmlUnescape | safeHTML }} - {{ .Site.Title }}">
+    {{ if isset .Params "subtitle" }}
+    <meta property="og:title" content="{{ .Title }}: {{ .Params.subtitle }}">
+    {{ else }}
+    <meta property="og:title" content="{{ .Title }}">
+    {{ end }}
     <meta property="og:type" content="article">
     <meta property="og:description" content="{{ .Description }}">
     <meta name="description" content="{{ .Description }}">
     <meta name="twitter:description" content="{{ .Description }}">
-    {{ if (index .Params "Image")}}
-      {{ $img := .Page.Resources.GetMatch (printf "*%s*" (index .Params "Image"))  }}
+    {{ if .Params.Image }}
+      {{ $img := .Page.Resources.GetMatch (printf "*%s*" .Params.Image)  }}
       <meta property="og:image" content="{{ $img.Permalink }}">
       <meta property="og:image:url" content="{{ $img.Permalink }}">
       <meta property="og:image:width" content="{{ $img.Width }}">
