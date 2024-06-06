@@ -20,8 +20,8 @@ trivial examples is Sisyphean.
 The state of things is such that the premier advice for learning ASIO in the C++
 community is, ["just ask **sehe**"](https://www.reddit.com/r/cpp/comments/15f1zu8/any_good_sources_for_learning_boost_asio_for/juawmyr/).
 Relying on a single StackOverflow account as a tutorial mechanism would be
-catastrophic for most projects, but **sehe** is so active, insightful, and
-patient that ASIO almost gets away with it.
+catastrophic for most projects, but [**sehe**](https://stackoverflow.com/users/85371/sehe)
+is so active, insightful, and patient that ASIO almost gets away with it.
 
 {{< collapse label="Not here for a lecture?" >}}
 
@@ -104,11 +104,11 @@ you this one for free.
       with basic ASIO concepts like completion tokens. The
       [ASIO documentation](https://think-async.com/Asio/asio-1.30.2/doc/asio/overview/model/completion_tokens.html)
       covers these decently, but if you're unfamiliar with them it might be
-      worthwhile to work through understanding the ASIO tutorial code before
-      tackling this post.
+      worthwhile to work through the ASIO tutorial code before tackling this
+      post.
 
-      I don't think the use of the constructs here makes much sense without
-      an intuitive understanding of the problem they're trying to solve.
+      I don't think the constructs presented here make much sense without an
+      intuitive understanding of the problem they're trying to solve.
 
 {{<
   img2 src="skel.webp" darksrc="skel_dark.webp" resize="x482 q100"
@@ -320,8 +320,8 @@ we can suspend via `co_await` until the operation has completed.
 
 
 {{< collapse label="Figure 3B" >}}
-Note that `app.run` takes a completion token. It could be used with any ASIO
-mechanism, not just the C++20 coroutine model we're using here.
+Note that `PythonApp.run` takes a completion token. It could be used with any
+ASIO mechanism, not just the C++20 coroutine model we're using here.
 ```cpp
 asio::awaitable<void> client_handler(
   tcp::socket s, PythonApp& app
@@ -346,9 +346,10 @@ asio::awaitable<void> client_handler(
 }
 ```
 For the pendants, as written here, this example leaks a Python object reference
-when it drops the connection. The more complete version in the provided example
-repository fixes that bug, but it requires a little more supporting machinery
-than nicely fits in this slideware.
+when it drops the connection. The more complete version in the
+[provided example repository](https://github.com/nickelpro/make-it-async-examples)
+fixes that bug, but it requires a little more supporting machinery than nicely
+fits in this slideware.
 {{< /collapse >}}
 
 But what have we really done here? `co_await` will suspend our coroutine and
@@ -367,7 +368,7 @@ This is somewhat natural. The GIL is a bottleneck for this program. However,
 imagine a case where the Python interpreter was fast enough to serve two or
 three IO threads handling the `accept`, `read`, and `write` calls, with a
 dedicated Python thread handling the data processing. Instead of servicing those
-IO operations, all the executors spend all their time waiting on the GIL only
+IO operations, the executors spend all their time waiting on the GIL only
 servicing IO calls in their brief moments not blocking on it.
 
 We can imagine many resources that might fall into a similar category: memory
@@ -391,7 +392,7 @@ The good news is ASIO provides direct support for such strands of execution,
 with the conveniently named `asio::strand`. A `strand` is an executor which
 guarantees  **non-concurrent** execution of work submitted to it. This removes
 the need to manage any locks, GIL or otherwise, the `strand` will guarantee
-only a single executor is inside the Python interpreter at a time.[^5]
+only a single operation is inside the Python interpreter at a time.[^5]
 
 [^5]: There exist complications with this approach, and strategies for managing
       those complications, which I'm eliding. They're Python-specific, so don't
@@ -546,27 +547,28 @@ Damn that was a lot. Everybody take five.
 
 ## I am but mad North-North-West.<br>When the executors are blocked,<br>I know a hawk from a handsaw
 
-So that's it, that's what I learned, and I hadn't seen anyone else write it up.
-Was that useful? Is this good? I have no idea. I know this post is a culmination
-of weeks spent learning and thinking about coroutines, modern C++ constructs,
-ASIO, and program structure generally. Is it supposed to be that hard?
+Anyway that's what I learned, I hope it's useful. Writing it all out it's not
+that much information, but it took weeks of nights and weekends experimenting
+and running into dead ends to work out this little demo.
 
-There's a refrain that goes, "ASIO isn't meant for mortal programmers, it's
-intended for library authors to build frameworks on top of (see: Boost.Beast)",
-which I have never entirely bought.[^9] There's not a glut of ASIO-based
-frameworks out there, in fact there's barely *any* decent ASIO-based code out
-there.
+When I was a kid I learned networking from reading
+[**Beej's Guide to Network Programming**](https://www.beej.us/guide/bgnet/),
+which got me started down the path of asynchronous programming generally. I
+struggled to build complete programs though, succeeding merely in little scripts
+which blasted hardcoded byte sequences into the aether.
 
-[^9]: You may use an ASIO-based framework with any protocol, so long as that
-      protocol is HTTP.
+Only after I saw a complete, working, practical implementation of the
+fundamentals **Beej** had taught me did it click. My first ever asynchronous
+network program was [a Minecraft bot called SpockBot](https://github.com/SpockBotMC/SpockBot),
+which started as a wholesale copy of [Barney Gale's barneymc framework](https://github.com/barneygale/barneymc).
 
-You can catch glimpses of it. Bravura demonstrations in six line snippets posted
-to the C++ Alliance blog or **sehe** demo'ing some never-before-publicized
-technique on a StackOverflow question with a eighty-seven views and two upvotes.
-But if this is industrial strength networking As-It-Should-Be™, it is in
-desperate need of stronger public advocates in better dialogue with the
-community at every level of expertise.
+I think ASIO desperately needs the same. Complete, practical demonstrations that
+can be directly copied and expanded upon by application developers. It needs its
+own version of the [Sascha Williams Vulkan-Samples](https://github.com/KhronosGroup/Vulkan-Samples),
+or the [LLVM Kaleidoscope tutorial](https://llvm.org/docs/tutorial/). Not toys,
+real bedrock developers can build on, supported by complete documentation beyond
+the spartan API references.
 
 *Also the double dispatch trick is stupid. ASIO should absolutely have a utility
-function for "run this thing on a different executor and return back to the
-originator".*
+function for "run this thing on a different executor and dispatch the completion
+handler to its associated executor". Just saying.*

@@ -26,7 +26,9 @@
     <link rel="stylesheet" href="{{ $main_style.Permalink }}">
     {{- else -}}
     <title>{{ .Title | htmlUnescape | safeHTML }} - {{ .Site.Title }}</title>
-    {{ if isset .Params "subtitle" }}
+    {{ if .Params.mediaTitle }}
+    <meta property="og:title" content="{{ .Params.mediaTitle }}">
+    {{ else if .Params.subtitle }}
     <meta property="og:title" content="{{ .Title }}: {{ .Params.subtitle }}">
     {{ else }}
     <meta property="og:title" content="{{ .Title }}">
