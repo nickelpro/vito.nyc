@@ -21,7 +21,7 @@ operation of highly optimized extension libraries should be a bottle neck.
 winds and following seas.
 
 Also, hey, if you're real busy because you have a job and you're hiring,
-I also would like a job. [Resume is here.]()
+I also would like a job. [Resume is here.](https://vito.nyc/vito_gamberini_cv.pdf)
 
 {{< /collapse >}}
 

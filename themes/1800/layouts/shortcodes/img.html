@@ -11,7 +11,9 @@
   {{ end }}
 {{ end }}
 
+{{ if not (.Get "shape-outside") }}
 <figure style="text-align: center; position: relative; {{ .Get "style" | safeCSS }}">
+{{ end }}
   <img
     {{ if (.Get "darkmode") }}
       class="dark-{{ .Get "darkmode" | safeCSS }}"
@@ -20,9 +22,10 @@
       data-lightsrc="{{ $lightsrc.RelPermalink }}"
       data-darksrc="{{ $darksrc.RelPermalink }}"
     {{ end }}
-    style="display: block; {{ .Get "imgstyle" | safeCSS }}"
+    style="display: block; {{ .Get "imgstyle" | safeCSS }} {{ if (.Get "shape-outside") }} shape-outside: url({{ $lightsrc.RelPermalink }}); {{ end }}"
     src="{{ $lightsrc.RelPermalink }}" alt="{{ .Get "alt" }}"
   >
+{{ if not (.Get "shape-outside") }}
   {{if or (len .Inner) (.Get "caption")}}
 	<figcaption style="{{ .Get "figstyle" | safeCSS }}">
     {{ if eq (len .Inner) 0}}
@@ -33,3 +36,4 @@
   </figcaption>
   {{ end }}
 </figure>
+{{ end }}

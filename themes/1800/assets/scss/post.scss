@@ -153,11 +153,13 @@ article>h2::before {
 }
 
 .dark-mode article>p:first-of-type::first-letter {
-  color: #8d762c;
+  background-color: #8d762c;
+  color: $black;
 }
 
 article>p:first-of-type::first-letter {
   font-family: 'Alphabet of Children';
+  color: #000000;
   font-size: 8.2rem;
   float: left;
   margin-right: 0.25rem;

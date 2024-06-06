@@ -1,0 +1,24 @@
+{{ $lightsrc := .Page.Resources.GetMatch (printf "*%s*" (.Get "src"))}}
+{{ $darksrc := .Page.Resources.GetMatch (printf "*%s*" (.Get "darksrc"))}}
+
+{{ if (.Get "resize") }}
+  {{ $lightsrc = $lightsrc.Resize (.Get "resize") }}
+{{ end }}
+
+{{ if (.Get "darksrc")}}
+  {{ if (.Get "resize") }}
+    {{ $darksrc = $darksrc.Resize (.Get "resize") }}
+  {{ end }}
+{{ end }}
+
+<img
+  {{ if (.Get "darkmode") }}
+    class="dark-{{ .Get "darkmode" | safeCSS }}"
+  {{ end }}
+  {{ if (.Get "darksrc") }}
+    data-lightsrc="{{ $lightsrc.RelPermalink }}"
+    data-darksrc="{{ $darksrc.RelPermalink }}"
+  {{ end }}
+  style="display: block; {{ .Get "style" | safeCSS }} {{ if (.Get "shape-outside") }} shape-outside: url({{ $lightsrc.RelPermalink }}); {{ end }}"
+  src="{{ $lightsrc.RelPermalink }}" alt="{{ .Get "alt" }}"
+>

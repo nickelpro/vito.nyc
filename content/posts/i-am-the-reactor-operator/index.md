@@ -17,11 +17,11 @@ about submarines.
 
 {{< img src="ship" style="width: 35%; float: right;" />}}
 
-The result is not a factually accurate account of nuclear reactors, submarines,
-Chief Holman, or for that matter myself. If you know anything about these
-things or these people, please forgive some poetic license, I really needed to
-get into college. If you ever stood on a watch team with me as your Reactor
-Operator, I apologize twice over.
+The result is not a factually accurate account of naval propulsion reactors,
+submarines, Chief Holman, or for that matter myself. If you know anything about
+these things or these people please forgive some poetic license, I really
+needed to get into college. If you ever stood on a watch team with me as your
+Reactor Operator, I apologize twice over.
 
 {{<fleuron>}}
 
@@ -63,7 +63,7 @@ Island is gone. In his place is someone with confidence and discipline,
 expected from military training, but also something more. The man standing
 before the Reactor Plant Control Panel takes ownership of his work,
 responsibility for his decisions, and has the integrity to accept the
-consequences for his actions. Ownership, responsibility, and integrity are the
+consequences of his actions. Ownership, responsibility, and integrity are the
 roots of trust and they are why I have been given control of my reactor.
 
 Trying not to betray my excitement I announce, “The reactor is critical.” I’ve

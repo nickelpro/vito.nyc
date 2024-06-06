@@ -2,6 +2,7 @@
 title: "What's up with your website's name?"
 date: 2019-06-19T19:25:59-07:00
 draft: false
+epigraph: "Context: This site used to be located at https://nickelp.ro"
 ---
 
 This is a pretty common question, enough that I can milk it for some blog
